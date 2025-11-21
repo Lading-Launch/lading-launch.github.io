@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
 
 interface BlogCardProps {
+  id: number;
   title: string;
   excerpt: string;
   date: string;
@@ -9,9 +11,10 @@ interface BlogCardProps {
   image: string;
 }
 
-const BlogCard = ({ title, excerpt, date, category, image }: BlogCardProps) => {
+const BlogCard = ({ id, title, excerpt, date, category, image }: BlogCardProps) => {
   return (
-    <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-brass/20 bg-card group cursor-pointer">
+    <Link to={`/blog/${id}`}>
+      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-brass/20 bg-card group cursor-pointer">
       <div className="relative h-48 overflow-hidden">
         <img 
           src={image} 
@@ -37,6 +40,7 @@ const BlogCard = ({ title, excerpt, date, category, image }: BlogCardProps) => {
         </p>
       </CardContent>
     </Card>
+    </Link>
   );
 };
 
