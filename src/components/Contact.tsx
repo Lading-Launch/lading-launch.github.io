@@ -27,7 +27,7 @@ const Contact = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="md:col-span-2 p-8 border-2 border-brass bg-card/95 backdrop-blur-sm">
-              <form className="space-y-6">
+              <form className="space-y-6" action="https://formsubmit.co/ahoy@ladingandlaunch.com" method="POST">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2 uppercase tracking-wide">
@@ -35,6 +35,7 @@ const Contact = () => {
                     </label>
                     <Input 
                       className="border-2 border-brass bg-background" 
+                      name="name"
                       placeholder="John Silver"
                     />
                   </div>
@@ -44,6 +45,7 @@ const Contact = () => {
                     </label>
                     <Input 
                       type="email"
+                      name="email"
                       className="border-2 border-brass bg-background" 
                       placeholder="captain@vessel.com"
                     />
@@ -56,6 +58,7 @@ const Contact = () => {
                   </label>
                   <Input 
                     className="border-2 border-brass bg-background" 
+                    name="company"
                     placeholder="The Trading Co."
                   />
                 </div>
@@ -66,6 +69,7 @@ const Contact = () => {
                   </label>
                   <Textarea 
                     className="border-2 border-brass bg-background min-h-32" 
+                    name="message"
                     placeholder="Tell us about your eCommerce voyage..."
                   />
                 </div>
@@ -73,6 +77,7 @@ const Contact = () => {
                 <Button 
                   size="lg" 
                   className="w-full bg-primary text-primary-foreground hover:bg-anchor-dark border-2 border-brass text-lg py-6"
+                  type="submit"
                 >
                   Send Message
                 </Button>
