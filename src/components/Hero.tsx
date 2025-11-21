@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Anchor } from "lucide-react";
+import logo from "@/assets/lading_launch.svg";
 
 const Hero = () => {
   return (
@@ -12,18 +12,13 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Logo placeholder - will be replaced with actual logo */}
           <div className="mb-8 flex justify-center">
-            <div className="inline-flex items-center gap-3 px-8 py-4 border-4 border-brass bg-card/80 backdrop-blur-sm">
-              <Anchor className="w-12 h-12 text-brass" />
-              <div className="text-left">
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-none">
-                  Lading & Launch
-                </h1>
-                <p className="text-sm text-muted-foreground uppercase tracking-widest mt-1">
-                  Est. 2024
-                </p>
-              </div>
+            <div className="inline-flex items-center px-8 py-6 border-4 border-brass bg-card/80 backdrop-blur-sm shadow-lg">
+              <img 
+                src={logo} 
+                alt="Lading & Launch Logo" 
+                className="h-24 md:h-32 w-auto"
+              />
             </div>
           </div>
           
