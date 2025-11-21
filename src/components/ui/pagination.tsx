@@ -39,6 +39,8 @@ const PaginationLink = ({ className, isActive, size = "icon", ...props }: Pagina
         variant: isActive ? "outline" : "ghost",
         size,
       }),
+      isActive && "bg-brass/10 border-brass text-brass hover:bg-brass/20 hover:text-brass",
+      "transition-all duration-300",
       className,
     )}
     {...props}
@@ -47,16 +49,26 @@ const PaginationLink = ({ className, isActive, size = "icon", ...props }: Pagina
 PaginationLink.displayName = "PaginationLink";
 
 const PaginationPrevious = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink aria-label="Go to previous page" size="default" className={cn("gap-1 pl-2.5", className)} {...props}>
+  <PaginationLink 
+    aria-label="Go to previous page" 
+    size="default" 
+    className={cn("gap-1 pl-2.5 hover:text-brass border-brass/20", className)} 
+    {...props}
+  >
     <ChevronLeft className="h-4 w-4" />
-    <span>Previous</span>
+    <span>Port</span>
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink aria-label="Go to next page" size="default" className={cn("gap-1 pr-2.5", className)} {...props}>
-    <span>Next</span>
+  <PaginationLink 
+    aria-label="Go to next page" 
+    size="default" 
+    className={cn("gap-1 pr-2.5 hover:text-brass border-brass/20", className)} 
+    {...props}
+  >
+    <span>Starboard</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 );
