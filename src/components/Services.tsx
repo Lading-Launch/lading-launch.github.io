@@ -80,7 +80,7 @@ const Services = () => {
                 <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-brass mt-1">▸</span>
+                      <span className="text-brass -mt-0.5">▸</span>
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}

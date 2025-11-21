@@ -14,7 +14,13 @@ jobs:
     environment:
       name: github-pages
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-react-to-github-pages@v1.2.4
-      with:
-        path: dist
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: cp dist/index.html dist/404.html
+      - uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        with:
+          path: dist

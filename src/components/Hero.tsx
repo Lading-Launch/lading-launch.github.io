@@ -60,7 +60,6 @@ const Hero = () => {
               to="services"
               smooth={true}
               duration={600}
-              offset={-80}
             >
               <Button 
                 size="lg" 
