@@ -1,4 +1,4 @@
-import { Anchor } from "lucide-react";
+import logo from "@/assets/lading_launch.svg";
 
 const Footer = () => {
   return (
@@ -8,12 +8,13 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <Anchor className="w-8 h-8 text-brass" />
-              <div>
-                <h3 className="text-2xl font-bold">Lading & Launch</h3>
-                <p className="text-sm text-primary-foreground/70">Est. 2024</p>
-              </div>
+            <div className="mb-4">
+              <img 
+                src={logo} 
+                alt="Lading & Launch Logo" 
+                className="h-16 w-auto mb-2"
+              />
+              <p className="text-sm text-primary-foreground/70">Est. 2024</p>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed max-w-md">
               Navigating the waters of Shopify eCommerce with expertise, 
