@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import logo from "@/assets/lading_launch.svg";
+import logo from "@/assets/lading_launch_hero.webp";
 
 const Hero = () => {
   return (
