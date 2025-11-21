@@ -107,7 +107,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-2">Signal Office</h3>
                     <p className="text-sm text-muted-foreground">
-                      hello@ladinglaunch.com
+                      <a href="mailto:ahoy@ladingandlaunch.com">ahoy@ladingandlaunch.com</a>
                     </p>
                   </div>
                 </div>
