@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import logo from "@/assets/lading_launch_hero.webp";
 
 const Hero = () => {
@@ -55,19 +56,33 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-anchor-dark text-lg px-8 py-6 border-2 border-brass shadow-lg"
+            <ScrollLink 
+              to="services"
+              smooth={true}
+              duration={600}
+              offset={-80}
             >
-              Set Sail With Us
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 border-brass text-foreground hover:bg-brass hover:text-card text-lg px-8 py-6"
+              <Button 
+                size="lg" 
+                className="bg-primary text-primary-foreground hover:bg-anchor-dark text-lg px-8 py-6 border-2 border-brass shadow-lg"
+              >
+                Set Sail With Us
+              </Button>
+            </ScrollLink>
+            <ScrollLink 
+              to="about"
+              smooth={true}
+              duration={600}
+              offset={-80}
             >
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 border-brass text-foreground hover:bg-brass hover:text-card text-lg px-8 py-6"
+              >
               Explore Our Fleet
-            </Button>
+              </Button>
+            </ScrollLink>
           </div>
         </div>
       </div>
