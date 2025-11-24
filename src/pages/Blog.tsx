@@ -15,51 +15,14 @@ import {
 const blogPosts = [
   {
     id: 1,
-    title: "Setting Sail with Shopify: A Merchant's Guide",
-    excerpt: "Embark on your eCommerce journey with our comprehensive guide to launching your first Shopify store.",
-    date: "March 15, 2024",
+    title: "Commerce for the Age Yet to Come",
+    excerpt: "Step right up, good merchant, and lend an ear to the curious trade of Lading & Launch.",
+    body: `Step right up, good merchant, and lend an ear to the curious trade of Lading & Launch. We are humble craftsmen of a most peculiar sort, dealing not only in timber and tar but in the wondrous shopfronts of a distant age yet to dawn. Our work is the shaping of custom Shopify stores and components, each built with the care of a seasoned shipwright and the imagination of a future mechanist.
+    
+    Whether you seek to outfit a brand new digital vessel or keep a long-sailing one in fine repair, our crew stands ready. We mend what needs mending, refine what needs refinement, and see that your store runs smooth across every tide. With Lading & Launch at your side, your commerce is prepared to rise, travel, and prosper across the wide and ever-growing seas of tomorrow.`,
+    date: "November 24, 2025",
     category: "Getting Started",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
-  },
-  {
-    id: 2,
-    title: "Navigating the Waters of Shopify Plus",
-    excerpt: "Discover when it's time to upgrade to Shopify Plus and what benefits await your growing enterprise.",
-    date: "March 10, 2024",
-    category: "Enterprise",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
-  },
-  {
-    id: 3,
-    title: "Anchoring Your Brand: Design Best Practices",
-    excerpt: "Learn the timeless principles of eCommerce design that convert visitors into loyal customers.",
-    date: "March 5, 2024",
-    category: "Design",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
-  },
-  {
-    id: 4,
-    title: "Charting Performance: Speed Optimization Tips",
-    excerpt: "Navigate the technical seas of site performance with our expert optimization strategies.",
-    date: "February 28, 2024",
-    category: "Technical",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-  },
-  {
-    id: 5,
-    title: "Harbor Security: Protecting Your Store",
-    excerpt: "Safeguard your Shopify store from digital pirates with these essential security measures.",
-    date: "February 20, 2024",
-    category: "Security",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
-  },
-  {
-    id: 6,
-    title: "The Merchant's Log: SEO for Shopify",
-    excerpt: "Chart a course to better search rankings with proven SEO strategies for your Shopify store.",
-    date: "February 15, 2024",
-    category: "Marketing",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80"
+    image: "/ship-at-port.webp"
   }
 ];
 
