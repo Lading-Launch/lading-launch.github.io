@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import Footer from "@/components/Footer";
-import logo from "@/assets/lading_launch.svg";
+import Header from "@/components/Header";
 import {
   Pagination,
   PaginationContent,
@@ -12,50 +11,25 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Commerce for the Age Yet to Come",
-    excerpt: "Step right up, good merchant, and lend an ear to the curious trade of Lading & Launch.",
-    body: `Step right up, good merchant, and lend an ear to the curious trade of Lading & Launch. We are humble craftsmen of a most peculiar sort, dealing not only in timber and tar but in the wondrous shopfronts of a distant age yet to dawn. Our work is the shaping of custom Shopify stores and components, each built with the care of a seasoned shipwright and the imagination of a future mechanist.
-    
-    Whether you seek to outfit a brand new digital vessel or keep a long-sailing one in fine repair, our crew stands ready. We mend what needs mending, refine what needs refinement, and see that your store runs smooth across every tide. With Lading & Launch at your side, your commerce is prepared to rise, travel, and prosper across the wide and ever-growing seas of tomorrow.`,
-    date: "November 24, 2025",
-    category: "Getting Started",
-    image: "/ship-at-port.webp"
-  }
-];
+import { blogPosts } from "@/data/blogPosts";
 
 const POSTS_PER_PAGE = 6;
+
+const sortedPosts = [...blogPosts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 
 const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   
-  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
-  const currentPosts = blogPosts.slice(startIndex, endIndex);
+  const currentPosts = sortedPosts.slice(startIndex, endIndex);
 
   return (
     <div className="min-h-screen relative">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-brass/20">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Lading & Launch" className="h-12 w-auto" />
-            </Link>
-            <div className="flex items-center gap-6">
-              <Link to="/" className="text-foreground/80 hover:text-brass transition-colors">
-                Home
-              </Link>
-              <Link to="/blog" className="text-brass font-semibold">
-                Captain's Log
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-background to-anchor-dark/5">

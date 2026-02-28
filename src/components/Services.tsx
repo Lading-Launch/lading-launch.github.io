@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Ship, Wrench, Package } from "lucide-react";
 
@@ -5,6 +6,7 @@ const services = [
   {
     icon: Ship,
     title: "New Site Builds",
+    slug: "new-builds",
     description: "Launch your eCommerce venture with a custom-built Shopify store. From hull to helm, we craft digital storefronts that turn browsers into buyers.",
     features: [
       "Custom theme development",
@@ -16,6 +18,7 @@ const services = [
   {
     icon: Wrench,
     title: "Support & Maintenance",
+    slug: "maintenance",
     description: "Keep your ship seaworthy with ongoing support and maintenance. We handle the barnacles so you can focus on the horizon.",
     features: [
       "Technical troubleshooting",
@@ -27,6 +30,7 @@ const services = [
   {
     icon: Package,
     title: "Shopify Components",
+    slug: "components",
     description: "Premium components and sections ready to drop into your store. Battle-tested cargo for your digital vessel.",
     features: [
       "Plug-and-play installation",
@@ -41,6 +45,11 @@ const Services = () => {
   return (
     <section className="py-24 relative" id="services">
       <div className="container mx-auto px-4">
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-12">
+          <p className="text-lg text-foreground">
+            While we continue to offer white-glove Shopify implementations for growing brands, we're now productizing our most-requested features into apps that deliver results 24/7 – with less custom dev time.
+          </p>
+        </div>
         <div className="text-center mb-16">
           <div className="inline-block px-6 py-2 border-2 border-brass bg-card mb-6">
             <span className="text-sm uppercase tracking-widest text-brass font-semibold">
@@ -61,9 +70,9 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
+              <Link key={index} to={`/services/${service.slug}`}>
               <Card 
-                key={index}
-                className="p-8 border-2 border-brass bg-card/95 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="p-8 border-2 border-brass bg-card/95 backdrop-blur-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               >
                 <div className="mb-6 inline-block p-4 border-2 border-brass bg-background">
                   <Icon className="w-10 h-10 text-brass" />
@@ -86,6 +95,7 @@ const Services = () => {
                   ))}
                 </ul>
               </Card>
+              </Link>
             );
           })}
         </div>
