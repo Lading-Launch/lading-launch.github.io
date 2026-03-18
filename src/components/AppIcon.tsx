@@ -1,4 +1,5 @@
-import { Package, Gift } from "lucide-react";
+import { Gift } from "lucide-react";
+import dealsnapIcon from "@/assets/dealsnap-icon.webp";
 
 interface AppIconProps {
   app: "dealsnap" | "scratch-and-win";
@@ -20,7 +21,6 @@ const iconSizes = {
 };
 
 const AppIcon = ({ app, size = "lg", variant = "default", className = "" }: AppIconProps) => {
-  const Icon = app === "dealsnap" ? Package : Gift;
   const sizeClass = sizeClasses[size];
   const iconSize = iconSizes[size];
   const isLight = variant === "light";
@@ -28,17 +28,25 @@ const AppIcon = ({ app, size = "lg", variant = "default", className = "" }: AppI
   return (
     <div
       className={`
-        flex items-center justify-center rounded-2xl border-2 border-brass
-        p-4 shadow-[var(--shadow-maritime)]
-        ${isLight ? "bg-primary-foreground/95" : "bg-background/80"}
+        flex items-center justify-center rounded-[20px] border border-brass/40
+        p-4 overflow-hidden
+        ${isLight ? "bg-primary-foreground/95" : "bg-background/90"}
         ${sizeClass} ${className}
       `}
       aria-hidden
     >
-      <Icon
-        className={`${iconSize} ${isLight ? "text-primary" : "text-brass"}`}
-        strokeWidth={1.5}
-      />
+      {app === "dealsnap" ? (
+        <img
+          src={dealsnapIcon}
+          alt="DealSnap"
+          className={`${iconSize} object-contain`}
+        />
+      ) : (
+        <Gift
+          className={`${iconSize} text-primary`}
+          strokeWidth={1.5}
+        />
+      )}
     </div>
   );
 };
