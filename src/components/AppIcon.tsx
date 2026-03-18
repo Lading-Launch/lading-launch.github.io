@@ -1,7 +1,7 @@
 import { Package, Gift } from "lucide-react";
 
 interface AppIconProps {
-  app: "bundle-builder" | "scratch-and-win";
+  app: "dealsnap" | "scratch-and-win";
   size?: "sm" | "md" | "lg";
   variant?: "default" | "light";
   className?: string;
@@ -20,7 +20,7 @@ const iconSizes = {
 };
 
 const AppIcon = ({ app, size = "lg", variant = "default", className = "" }: AppIconProps) => {
-  const Icon = app === "bundle-builder" ? Package : Gift;
+  const Icon = app === "dealsnap" ? Package : Gift;
   const sizeClass = sizeClasses[size];
   const iconSize = iconSizes[size];
   const isLight = variant === "light";

@@ -17,17 +17,17 @@ const Apps = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="border-2 border-brass bg-card/95 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-              <Link to="/apps/bundle-builder" className="block">
+              <Link to="/apps/dealsnap" className="block">
                 <div className="h-80 bg-gradient-to-br from-brass to-aged-wood flex items-center justify-center p-8">
-                  <AppIcon app="bundle-builder" size="lg" className="!h-36 !w-36" />
+                  <AppIcon app="dealsnap" size="lg" className="!h-36 !w-36" />
                 </div>
               </Link>
               <div className="p-10 flex flex-col gap-4">
-                <h2 className="text-4xl font-semibold text-foreground">Bundle Builder</h2>
+                <h2 className="text-4xl font-semibold text-foreground">DealSnap</h2>
                 <p className="text-xl text-muted-foreground flex-grow">Pick combinations or buy sets for automatic discounts. Perfect for increasing average order value effortlessly.</p>
-                <AddToShopifyButton appSlug="bundle-builder" className="w-full sm:w-auto sm:min-w-[220px] justify-center" />
-                <Link to="/apps/bundle-builder" className="text-brass font-medium text-lg hover:underline">
-                  Explore Bundle Builder →
+                <AddToShopifyButton appSlug="dealsnap" className="w-full sm:w-auto sm:min-w-[220px] justify-center" />
+                <Link to="/apps/dealsnap" className="text-brass font-medium text-lg hover:underline">
+                  Explore DealSnap →
                 </Link>
               </div>
             </div>

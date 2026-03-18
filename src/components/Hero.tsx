@@ -12,7 +12,7 @@ const Hero = () => {
           </h1>
           <p className="text-xl md:text-3xl text-primary-foreground/90 max-w-4xl mx-auto mb-10">
             We turned the features our clients ask for most into simple, powerful apps.<br />
-            Now launching: Bundle Builder & Scratch & Win
+            Now launching: DealSnap & Scratch & Win
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link

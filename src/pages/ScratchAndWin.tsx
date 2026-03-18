@@ -27,7 +27,7 @@ const ScratchAndWin = () => {
             <p className="mt-8 text-xl text-muted-foreground">Launching Q2 2026 – early access & beta testing available for our current clients.</p>
           </div>
 
-          {/* Features list, CTA, cross-link to Bundle Builder */}
+          {/* Features list, CTA, cross-link to DealSnap */}
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-3xl font-semibold mb-6 text-foreground">Key Features</h2>
@@ -55,8 +55,8 @@ const ScratchAndWin = () => {
               </p>
               <p className="mt-6 text-muted-foreground">
                 Pairs perfectly with our{" "}
-                <Link to="/apps/bundle-builder" className="text-brass underline hover:no-underline">
-                  Bundle Builder
+                <Link to="/apps/dealsnap" className="text-brass underline hover:no-underline">
+                  DealSnap
                 </Link>{" "}
                 app for post-purchase surprise rewards.
               </p>
@@ -73,7 +73,7 @@ const ScratchAndWin = () => {
 
       <div id="pricing">
         <p className="text-center text-muted-foreground mb-6 max-w-2xl mx-auto px-6">
-          Slightly lower entry pricing than Bundle Builder – perfect as a companion app!
+          Slightly lower entry pricing than DealSnap – perfect as a companion app!
         </p>
         <PricingTable appName="Scratch & Win" appSlug="scratch-and-win" />
       </div>

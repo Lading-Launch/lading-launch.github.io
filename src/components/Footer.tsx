@@ -27,7 +27,7 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-brass">Products</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li><Link to="/apps" className="hover:text-brass transition-colors">Apps</Link></li>
-              <li><Link to="/apps/bundle-builder" className="hover:text-brass transition-colors">Bundle Builder</Link></li>
+              <li><Link to="/apps/dealsnap" className="hover:text-brass transition-colors">DealSnap</Link></li>
               <li><Link to="/apps/scratch-and-win" className="hover:text-brass transition-colors">Scratch & Win</Link></li>
             </ul>
           </div>

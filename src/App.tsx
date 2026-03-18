@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Apps from "./pages/Apps";
-import BundleBuilder from "./pages/BundleBuilder";
+import DealSnap from "./pages/DealSnap";
 import ScratchAndWin from "./pages/ScratchAndWin";
 import ServicesPage from "./pages/ServicesPage";
 import NewBuilds from "./pages/NewBuilds";
@@ -30,7 +30,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/apps" element={<Apps />} />
-          <Route path="/apps/bundle-builder" element={<BundleBuilder />} />
+          <Route path="/apps/dealsnap" element={<DealSnap />} />
           <Route path="/apps/scratch-and-win" element={<ScratchAndWin />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/new-builds" element={<NewBuilds />} />
