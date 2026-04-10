@@ -318,11 +318,11 @@
    ============================================================ */
 
 .card {
-  @apply bg-white rounded-xl border border-neutral-200 p-6 md:p-8 shadow-sm transition-all duration-200 ease-out;
+  @apply bg-white rounded-xl border border-neutral-200 p-6 md:p-8 shadow-sm transition-shadow duration-200 ease-out;
 }
 
 .card:hover {
-  @apply shadow-md -translate-y-1;
+  @apply shadow-md;
 }
 
 .card__title {
