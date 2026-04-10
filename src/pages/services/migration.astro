@@ -112,12 +112,12 @@ const migrates = [
 
   <!-- Migration Pricing -->
   <Section background="cream">
-    <h2 class="text-h2 text-center section__heading animate-fade-in">Migration Pricing</h2>
+    <h2 class="text-h2 text-center mb-10 animate-fade-in">Migration Pricing</h2>
     <Grid cols={3} class="animate-fade-in-stagger">
       {platforms.map((platform) => (
         <Card>
-          <h3 class="text-h3 section__heading">{platform.name}</h3>
-          <p class="text-h2 text-accent section__heading">{platform.price}</p>
+          <h3 class="text-h3 mb-3">{platform.name}</h3>
+          <p class="text-h2 text-accent mb-4">{platform.price}</p>
           <ul class="text-body space-y-2">
             {platform.includes.map((item) => (
               <li>&#10003; {item}</li>
@@ -131,11 +131,11 @@ const migrates = [
 
   <!-- What We Migrate -->
   <Section background="white">
-    <h2 class="text-h2 text-center section__heading animate-fade-in">Everything Moves With You</h2>
+    <h2 class="text-h2 text-center mb-10 animate-fade-in">Everything Moves With You</h2>
     <Grid cols={3} class="animate-fade-in-stagger">
       {migrates.map((item) => (
         <div>
-          <h3 class="text-h3 section__heading">{item.title}</h3>
+          <h3 class="text-h3 mb-3">{item.title}</h3>
           <p class="text-body text-neutral-600">{item.description}</p>
         </div>
       ))}
@@ -144,7 +144,7 @@ const migrates = [
 
   <!-- FAQ -->
   <Section background="cream">
-    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <h2 class="text-h2 text-center mb-8 animate-fade-in">Frequently Asked Questions</h2>
     <Accordion items={faqs} />
   </Section>
 
