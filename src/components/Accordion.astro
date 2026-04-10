@@ -1,4 +1,6 @@
 ---
+import chevronIcon from '../assets/icons/chevron-down.svg?raw';
+
 interface Props {
   items: Array<{ question: string; answer: string }>;
 }
@@ -9,7 +11,10 @@ const { items } = Astro.props;
 <div class="accordion">
   {items.map((item) => (
     <details class="accordion__item">
-      <summary class="accordion__question">{item.question}</summary>
+      <summary class="accordion__question">
+        <span>{item.question}</span>
+        <span class="accordion__chevron" set:html={chevronIcon} />
+      </summary>
       <div class="accordion__answer">
         <p>{item.answer}</p>
       </div>

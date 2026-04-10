@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const posts = (await getCollection('blog', ({ data }) => data.draft !== true))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "name": "Captain's Log",
+      "description": "Shopify guides, tips, and insights for e-commerce brands.",
+      "url": "https://ladingandlaunch.com/blog/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Captain's Log", "item": "https://ladingandlaunch.com/blog/" }
+      ]
+    }
+  ]
+};
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Captain's Log — Shopify Tips, Guides & Insights | Lading & Launch"
+  description="Shopify guides, tips, and insights for e-commerce brands. Store builds, optimization, migration, and conversion — from the team at Lading & Launch."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary">
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">Blog</p>
+      <h1 class="text-display text-white section__heading">Captain's Log</h1>
+      <p class="text-body-lg text-neutral-300">Shopify guides, tips, and insights for growing e-commerce brands.</p>
+    </div>
+  </Section>
+
+  <!-- Post Grid -->
+  <Section background="cream">
+    {posts.length > 0 ? (
+      <Grid cols={2} class="animate-fade-in-stagger">
+        {posts.map((post) => (
+          <Card href={`/blog/${post.id}/`}>
+            <p class="text-body-sm text-neutral-500 mb-2">{formatDate(post.data.date)}</p>
+            <h2 class="card__title">{post.data.title}</h2>
+            <p class="card__description">{post.data.description}</p>
+            {post.data.tags && (
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.data.tags.map((tag: string) => (
+                  <span class="text-label text-accent text-xs">{tag}</span>
+                ))}
+              </div>
+            )}
+            <span class="text-body-sm text-primary-light font-semibold">Read Post &rarr;</span>
+          </Card>
+        ))}
+      </Grid>
+    ) : (
+      <p class="text-body-lg text-neutral-500 text-center">Posts are on the way. Check back soon.</p>
+    )}
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Need Help With Your Shopify Store?"
+    description="We build, optimize, and manage Shopify stores for growing e-commerce brands."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>
