@@ -45,14 +45,6 @@ const differentiators = [
   },
 ];
 
-const techStack = [
-  { title: 'Shopify & Shopify Plus', description: 'Store builds, migrations, custom development' },
-  { title: 'Liquid', description: "Shopify's templating language — our daily driver" },
-  { title: 'JavaScript & TypeScript', description: 'Custom functionality and app development' },
-  { title: 'React', description: 'Shopify app frontends and custom storefronts' },
-  { title: 'Tailwind CSS', description: 'Fast, consistent, responsive styling' },
-  { title: 'Shopify APIs', description: 'Storefront, Admin, Checkout, and Payments APIs' },
-];
 ---
 
 <BaseLayout
@@ -95,24 +87,8 @@ const techStack = [
     </Grid>
   </Section>
 
-  <!-- Technical Expertise -->
-  <Section background="cream">
-    <div class="text-center animate-fade-in">
-      <h2 class="text-h2 section__heading">What We Work With</h2>
-      <p class="section__description text-body-lg text-neutral-600">The tools and technologies behind every project.</p>
-    </div>
-    <Grid cols={3} class="animate-fade-in-stagger">
-      {techStack.map((item) => (
-        <div class="text-center">
-          <h3 class="text-h4 section__heading">{item.title}</h3>
-          <p class="text-body-sm text-neutral-500">{item.description}</p>
-        </div>
-      ))}
-    </Grid>
-  </Section>
-
   <!-- Shopify Partners -->
-  <Section background="white">
+  <Section background="cream">
     <div class="text-center animate-fade-in">
       <h2 class="text-h2 section__heading">Official Shopify Partner</h2>
       <p class="text-body-lg text-neutral-700 max-w-2xl mx-auto">Lading &amp; Launch is a member of the Shopify Partners program. That means we have access to development stores, partner-exclusive tools, and direct support from Shopify's partner team. When you work with us, you're working with a partner Shopify recognizes.</p>

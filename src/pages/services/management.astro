@@ -141,7 +141,7 @@ const covered = [
       {tiers.map((tier) => (
         <Card class:list={[tier.recommended && 'border-t-4 border-accent relative']}>
           {tier.recommended && (
-            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 inline-block mb-3">Recommended</span>
+            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 inline-block mb-4">Recommended</span>
           )}
           <h3 class="text-h3 section__heading">{tier.name}</h3>
           <p class="text-h2 text-accent section__heading">{tier.price}</p>
