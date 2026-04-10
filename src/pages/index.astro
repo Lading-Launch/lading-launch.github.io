@@ -5,6 +5,7 @@ import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import Grid from '../components/Grid.astro';
 import CTABanner from '../components/CTABanner.astro';
+import Icon from '../components/Icon.astro';
 
 const schema = {
   "@context": "https://schema.org",
@@ -13,9 +14,7 @@ const schema = {
       "@type": "Organization",
       "name": "Lading & Launch",
       "url": "https://ladingandlaunch.com",
-      "description": "Shopify e-commerce agency and app development company.",
-      "email": "hello@ladingandlaunch.com",
-      "sameAs": []
+      "description": "Shopify store builds, optimizations, and management for DTC brands. Plus powerful Shopify apps.",
     },
     {
       "@type": "WebSite",
@@ -26,78 +25,28 @@ const schema = {
 };
 
 const services = [
-  {
-    title: 'Shopify Store Builds',
-    description: 'Custom Shopify stores designed to convert — from theme customization to full custom builds. Starting at $2,000.',
-    href: '/services/store-builds/',
-  },
-  {
-    title: 'Store Optimization',
-    description: 'Speed, SEO, and conversion improvements for stores that need to perform better. Starting at $500.',
-    href: '/services/optimization/',
-  },
-  {
-    title: 'Platform Migration',
-    description: 'Move from WooCommerce, Wix, Squarespace, or BigCommerce to Shopify. Zero data loss. Starting at $1,500.',
-    href: '/services/migration/',
-  },
-  {
-    title: 'Monthly Management',
-    description: 'Ongoing store management, updates, and optimization so you can focus on growing your brand. Starting at $300/mo.',
-    href: '/services/management/',
-  },
+  { title: 'Shopify Store Builds', icon: 'storefront', description: 'Custom Shopify stores designed to convert — from theme customization to full custom builds. Starting at $2,000.', href: '/services/store-builds/' },
+  { title: 'Store Optimization', icon: 'speedometer', description: 'Speed, SEO, and conversion improvements for stores that need to perform better. Starting at $500.', href: '/services/optimization/' },
+  { title: 'Platform Migration', icon: 'transfer', description: 'Move from WooCommerce, Wix, Squarespace, or BigCommerce to Shopify. Zero data loss. Starting at $1,500.', href: '/services/migration/' },
+  { title: 'Monthly Management', icon: 'settings', description: 'Ongoing store management, updates, and optimization so you can focus on growing your brand. Starting at $300/mo.', href: '/services/management/' },
 ];
 
 const differentiators = [
-  {
-    icon: '◎',
-    title: 'Shopify-Only Focus',
-    description: 'Every project, every line of code, every optimization — it\'s all Shopify. Specialization means deeper expertise and better results for your store.',
-  },
-  {
-    icon: '◈',
-    title: 'Transparent Pricing',
-    description: 'Fixed prices published on our website. No "request a quote" black box. You know what you\'re paying before the first call.',
-  },
-  {
-    icon: '▸',
-    title: 'Fast Delivery',
-    description: 'A starter store in 1–2 weeks, not 4–6. Lean operations and modern tooling mean your store launches faster without cutting corners.',
-  },
-  {
-    icon: '⚙',
-    title: 'Builders, Not Just Implementers',
-    description: 'We don\'t just set up themes — we build Shopify apps. That deeper technical expertise shows in every store we build.',
-  },
+  { icon: 'target', title: 'Shopify-Only Focus', description: 'Every project, every line of code, every optimization — it\'s all Shopify. Specialization means deeper expertise and better results for your store.' },
+  { icon: 'price-tag', title: 'Transparent Pricing', description: 'Fixed prices published on our website. No "request a quote" black box. You know what you\'re paying before the first call.' },
+  { icon: 'lightning', title: 'Fast Delivery', description: 'A starter store in 1–2 weeks, not 4–6. Lean operations and modern tooling mean your store launches faster without cutting corners.' },
+  { icon: 'code', title: 'Builders, Not Just Implementers', description: 'We don\'t just set up themes — we build Shopify apps. That deeper technical expertise shows in every store we build.' },
 ];
 
 const apps = [
-  {
-    title: 'DealSnap',
-    description: 'Flexible discount engine for Shopify. Create mix-and-match bundles, quantity breaks, and automatic discount combinations — without the workarounds.',
-  },
-  {
-    title: 'Scratch & Win',
-    description: 'Gamified scratch cards that capture emails and drive urgency. Visitors scratch to reveal a discount — more engaging than another boring popup.',
-  },
+  { title: 'DealSnap', description: 'Flexible discount engine for Shopify. Create mix-and-match bundles, quantity breaks, and automatic discount combinations — without the workarounds.' },
+  { title: 'Scratch & Win', description: 'Gamified scratch cards that capture emails and drive urgency. Visitors scratch to reveal a discount — more engaging than another boring popup.' },
 ];
 
 const steps = [
-  {
-    number: '01',
-    title: 'Discovery Call',
-    description: 'We learn about your brand, your goals, and your Shopify challenges. You get honest recommendations — even if that means you don\'t need us.',
-  },
-  {
-    number: '02',
-    title: 'Build & Launch',
-    description: 'We build your store with conversion and SEO baked in from day one. You review, we refine, and we launch when you\'re happy.',
-  },
-  {
-    number: '03',
-    title: 'Grow & Optimize',
-    description: 'After launch, we monitor performance and make ongoing improvements. Your store gets better every month, not just on day one.',
-  },
+  { number: '01', icon: 'phone', title: 'Discovery Call', description: 'We learn about your brand, your goals, and your Shopify challenges. You get honest recommendations — even if that means you don\'t need us.' },
+  { number: '02', icon: 'hammer', title: 'Build & Launch', description: 'We build your store with conversion and SEO baked in from day one. You review, we refine, and we launch when you\'re happy.' },
+  { number: '03', icon: 'chart-up', title: 'Grow & Optimize', description: 'After launch, we monitor performance and make ongoing improvements. Your store gets better every month, not just on day one.' },
 ];
 ---
 
@@ -128,6 +77,7 @@ const steps = [
     <Grid cols={4} class="animate-fade-in-stagger">
       {services.map((service) => (
         <Card href={service.href}>
+          <Icon name={service.icon} size={36} class="text-accent mb-4" />
           <h3 class="card__title">{service.title}</h3>
           <p class="card__description">{service.description}</p>
           <span class="text-body-sm text-primary-light font-semibold">Learn more &rarr;</span>
@@ -145,7 +95,7 @@ const steps = [
     <Grid cols={2} class="animate-fade-in-stagger">
       {differentiators.map((item) => (
         <div>
-          <span class="text-4xl text-accent mb-3 block" aria-hidden="true">{item.icon}</span>
+          <Icon name={item.icon} size={40} class="text-accent mb-4" />
           <h3 class="text-h3 mb-3">{item.title}</h3>
           <p class="text-body text-neutral-600">{item.description}</p>
         </div>
@@ -176,15 +126,17 @@ const steps = [
       <h2 class="text-h2 section__heading">How It Works</h2>
       <p class="section__description text-body-lg text-neutral-600 max-w-2xl mx-auto">From first conversation to live store — here's what to expect.</p>
     </div>
-    <Grid cols={3} class="animate-fade-in-stagger">
+    <div class="max-w-2xl mx-auto animate-fade-in">
       {steps.map((step) => (
-        <div class="text-center">
-          <span class="text-4xl font-bold text-accent block mb-3">{step.number}</span>
-          <h3 class="text-h3 mb-3">{step.title}</h3>
-          <p class="text-body text-neutral-600">{step.description}</p>
+        <div class="process-step">
+          <div class="process-step__number">{step.number}</div>
+          <div class="process-step__content">
+            <h3 class="process-step__title">{step.title}</h3>
+            <p class="process-step__description">{step.description}</p>
+          </div>
         </div>
       ))}
-    </Grid>
+    </div>
   </Section>
 
   <!-- Section 6: Social Proof -->

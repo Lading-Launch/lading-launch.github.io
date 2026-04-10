@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  tags?: string[];
+}
+
+const { title, tags } = Astro.props;
+---
+
+<div class="blog-featured-image">
+  <div class="blog-featured-image__content">
+    <p class="blog-featured-image__title">{title}</p>
+    {tags && tags.length > 0 && (
+      <div class="blog-featured-image__tags">
+        {tags.map((tag: string) => (
+          <span class="text-label text-accent text-xs">{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
