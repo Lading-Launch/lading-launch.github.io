@@ -1,6 +1,28 @@
 @import "tailwindcss";
 
 /* ============================================================
+   FONT FALLBACKS — Size-adjusted to reduce CLS during font load
+   ============================================================ */
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Playfair Display Fallback';
+  src: local('Georgia');
+  size-adjust: 112%;
+  ascent-override: 88%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* ============================================================
    DESIGN TOKENS
    ============================================================ */
 
@@ -36,8 +58,8 @@
   --color-error: #EF4444;
 
   /* Font families */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', 'Playfair Display Fallback', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
