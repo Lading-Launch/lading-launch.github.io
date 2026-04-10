@@ -1,0 +1,31 @@
+---
+interface Props {
+  background?: 'white' | 'cream' | 'primary' | 'primary-dark';
+  compact?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const { background = 'white', compact = false, id, class: className } = Astro.props;
+
+const modifierMap: Record<string, string> = {
+  'white': 'section--white',
+  'cream': 'section--cream',
+  'primary': 'section--primary',
+  'primary-dark': 'section--primary-dark',
+};
+---
+
+<section
+  id={id}
+  class:list={[
+    'section',
+    modifierMap[background],
+    compact && 'section--compact',
+    className,
+  ]}
+>
+  <div class="container">
+    <slot />
+  </div>
+</section>

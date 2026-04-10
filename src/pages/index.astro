@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lading & Launch",
+  "url": "https://ladingandlaunch.com",
+  "description": "Shopify store builds, optimizations, and management for DTC brands. Plus powerful Shopify apps.",
+};
+---
+
+<BaseLayout
+  title="Lading & Launch | Shopify E-Commerce Agency & App Development"
+  description="Shopify store builds, optimizations, and management for DTC brands. Plus powerful Shopify apps."
+  schema={schema}
+>
+  <Section background="primary">
+    <div class="text-center py-8">
+      <h1 class="text-display text-white section__heading">Shopify Stores Built to Sell</h1>
+      <p class="text-body-lg text-neutral-300 section__description max-w-2xl mx-auto">Expert Shopify store builds, optimization, and management for growing e-commerce brands.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="lg" href="/contact/">Book a Discovery Call</Button>
+        <Button variant="secondary-on-dark" size="lg" href="/services/">View Services</Button>
+      </div>
+    </div>
+  </Section>
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading">Site Under Construction</h2>
+    <p class="text-body text-center text-neutral-600">The full site is being built. This page confirms the scaffold is working.</p>
+  </Section>
+</BaseLayout>
