@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'How long does a Shopify store build take?',
+    answer: 'Starter stores typically take 1-2 weeks. Growth stores take 2-4 weeks. Premium builds with complex requirements can take 4-8 weeks. We\'ll give you a specific timeline during the discovery phase.',
+  },
+  {
+    question: 'Do I need to provide the design?',
+    answer: 'No. We handle design and development. If you have brand guidelines, a logo, or inspiration sites, that helps — but we can work with whatever you have.',
+  },
+  {
+    question: 'What if I already have a Shopify store that needs a redesign?',
+    answer: 'That\'s common. We treat redesigns the same as new builds — we\'ll assess what you have, keep what works, and rebuild what doesn\'t. Pricing is the same.',
+  },
+  {
+    question: 'Do you write product descriptions?',
+    answer: 'We can set up your products with the descriptions you provide. If you need copywriting, we can recommend partners or handle it as an add-on.',
+  },
+  {
+    question: 'What happens after launch?',
+    answer: 'We offer monthly management plans starting at $300/mo for ongoing support, updates, and optimization. Or we hand over the store and you manage it yourself — your choice.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Custom Shopify Store Builds",
+      "description": "Custom Shopify store design and development with SEO and conversion optimization built in.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "2000",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2000", "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ladingandlaunch.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Store Builds", "item": "https://ladingandlaunch.com/services/store-builds/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const tiers = [
+  {
+    name: 'Starter Store',
+    price: '$2,000 – $3,500',
+    bestFor: 'New brands launching their first Shopify store',
+    includes: [
+      'Theme customization',
+      '5–15 products set up',
+      'Essential pages (Home, About, Contact, FAQ, Policies)',
+      'Mobile-responsive design',
+      'Basic on-page SEO',
+      '1-2 week delivery',
+    ],
+    recommended: false,
+  },
+  {
+    name: 'Growth Store',
+    price: '$4,000 – $7,000',
+    bestFor: 'Growing brands that need advanced functionality',
+    includes: [
+      'Custom theme build or heavy customization',
+      '15–50 products set up',
+      'Advanced features (bundles, subscriptions, upsells)',
+      'Full SEO implementation',
+      'Third-party app integrations',
+      '2-4 week delivery',
+    ],
+    recommended: true,
+  },
+  {
+    name: 'Premium Store',
+    price: '$8,000 – $15,000+',
+    bestFor: 'Established brands with complex requirements',
+    includes: [
+      'Full custom build from scratch',
+      'Complex functionality and custom features',
+      'ERP, 3PL, and custom app integrations',
+      'Shopify Plus setup and configuration',
+      'Full SEO and performance optimization',
+      '4-8 week delivery',
+    ],
+    recommended: false,
+  },
+];
+
+const includes = [
+  { title: 'Conversion-Focused Design', description: 'Every page is designed to guide visitors toward a purchase. Clear CTAs, trust signals, and optimized product layouts.' },
+  { title: 'Mobile-First Development', description: 'Over 70% of e-commerce traffic is mobile. Your store will look and perform flawlessly on every device.' },
+  { title: 'On-Page SEO', description: 'Proper meta tags, semantic HTML, image optimization, schema markup, and site speed — so Google can find and rank your store.' },
+  { title: 'Speed Optimization', description: 'Fast stores convert better. We optimize images, minimize code, and ensure your store loads in under 3 seconds.' },
+  { title: 'Product Page Setup', description: 'We set up your products with optimized titles, descriptions, images, and variant configurations.' },
+  { title: 'Launch Support', description: 'We don\'t just hand over the keys. We walk you through your store, train you on Shopify, and make sure the launch goes smoothly.' },
+];
+
+const process = [
+  { step: '01', title: 'Discovery & Planning', description: 'We start with a call to understand your brand, products, and goals. You get a detailed project scope and timeline before any work begins.' },
+  { step: '02', title: 'Design & Build', description: 'We build your store with regular check-ins so you can review progress. No black box — you see what we\'re building as we build it.' },
+  { step: '03', title: 'Review & Refine', description: 'You review the full store and we make revisions until you\'re happy. We won\'t launch until everything is right.' },
+  { step: '04', title: 'Launch & Handoff', description: 'We launch your store, verify everything works, and walk you through managing it day-to-day. If you want ongoing support, we offer monthly management plans.' },
+];
+---
+
+<BaseLayout
+  title="Custom Shopify Store Builds — From $2,000 | Lading & Launch"
+  description="Custom Shopify store design and development with SEO and conversion optimization built in. Theme customization to full custom builds. Transparent pricing."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services/' },
+      { label: 'Store Builds' },
+    ]} />
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Custom Shopify Store Builds</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl section__description">Your store is your most important sales tool. We build Shopify stores that look great, load fast, and actually convert visitors into customers.</p>
+    </div>
+  </Section>
+
+  <!-- Pricing Tiers -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Choose Your Package</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {tiers.map((tier) => (
+        <Card class:list={[tier.recommended && 'border-t-4 border-accent relative']}>
+          {tier.recommended && (
+            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 inline-block mb-3">Recommended</span>
+          )}
+          <h3 class="text-h3 section__heading">{tier.name}</h3>
+          <p class="text-h2 text-accent section__heading">{tier.price}</p>
+          <p class="text-body-sm text-neutral-500 italic mb-4">Best for: {tier.bestFor}</p>
+          <ul class="text-body space-y-2">
+            {tier.includes.map((item) => (
+              <li>&#10003; {item}</li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- What's Included -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Every Store Build Includes</h2>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {includes.map((item) => (
+        <div>
+          <h3 class="text-h4 section__heading">{item.title}</h3>
+          <p class="text-body text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Process -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">How We Build Your Store</h2>
+    <div class="max-w-2xl mx-auto space-y-10 animate-fade-in">
+      {process.map((item) => (
+        <div class="flex gap-6">
+          <span class="text-4xl font-bold text-accent shrink-0">{item.step}</span>
+          <div>
+            <h3 class="text-h3 section__heading">{item.title}</h3>
+            <p class="text-body text-neutral-600">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-8 animate-fade-in">
+      {faqs.map((faq) => (
+        <div>
+          <h3 class="text-h3 section__heading">{faq.question}</h3>
+          <p class="text-body text-neutral-600">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Ready to Build Your Store?"
+    description="Book a free discovery call and let's plan your Shopify store."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>

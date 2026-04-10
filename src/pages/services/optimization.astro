@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'How do I know if my store needs optimization?',
+    answer: 'If your Shopify store loads in more than 3 seconds, your conversion rate is below 1.5%, or your Google rankings are slipping — optimization will help. Start with a Store Audit to get a clear picture.',
+  },
+  {
+    question: 'Will optimization break anything on my store?',
+    answer: 'No. We test everything in a staging environment before touching your live store. And we document every change so nothing is a mystery.',
+  },
+  {
+    question: 'How long does optimization take?',
+    answer: 'A Store Audit takes 3-5 business days. Speed optimization is typically 1-2 weeks. Conversion optimization is 2-4 weeks depending on scope.',
+  },
+  {
+    question: 'Do I need to pause my ads during optimization?',
+    answer: 'No. We make changes carefully and incrementally. Your store stays live and functional throughout the process.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Shopify Store Optimization",
+      "description": "Shopify store audits, speed optimization, and conversion rate improvements.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "500",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "500", "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ladingandlaunch.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Optimization", "item": "https://ladingandlaunch.com/services/optimization/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const services = [
+  {
+    name: 'Store Audit',
+    price: '$500 – $1,000',
+    description: 'A full technical review of your store — speed, SEO, UX, conversion, mobile, and accessibility. You get an actionable report with prioritized recommendations.',
+    deliverables: ['Speed analysis', 'SEO audit', 'UX review', 'Conversion assessment', 'Mobile testing', 'Prioritized action plan'],
+  },
+  {
+    name: 'Speed Optimization',
+    price: '$750 – $1,500',
+    description: 'Slow stores lose sales. We clean up your theme code, optimize images, audit your apps, and implement lazy loading and caching to get your store loading fast.',
+    deliverables: ['Theme code cleanup', 'Image optimization', 'App audit and cleanup', 'Lazy loading implementation', 'CDN and caching setup'],
+  },
+  {
+    name: 'Conversion Optimization',
+    price: '$1,500 – $3,000',
+    description: 'Your traffic is fine but your conversion rate isn\'t. We redesign product pages, optimize checkout flow, add trust signals, and set up A/B testing.',
+    deliverables: ['Product page redesign', 'Checkout optimization', 'Trust signal implementation', 'A/B test setup', 'Analytics configuration'],
+  },
+];
+
+const problems = [
+  { title: 'Slow Page Load Times', description: 'If your store takes more than 3 seconds to load, you\'re losing customers. We typically cut load times by 40-60%.' },
+  { title: 'Low Conversion Rates', description: 'Industry average for Shopify stores is 1.5-2%. If you\'re below that, there\'s room to improve through better UX and product page design.' },
+  { title: 'Poor Mobile Experience', description: 'Over 70% of your visitors are on mobile. If your store isn\'t optimized for mobile, most of your traffic is having a bad experience.' },
+  { title: 'Dropping SEO Rankings', description: 'Slow speeds, missing meta tags, broken links, and poor site structure all hurt your Google rankings. We fix the technical SEO issues holding you back.' },
+];
+---
+
+<BaseLayout
+  title="Shopify Store Optimization — Audits, Speed & Conversion | Lading & Launch"
+  description="Shopify store audits, speed optimization, and conversion rate improvements. Find out what's holding your store back and fix it. Starting at $500."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services/' },
+      { label: 'Optimization' },
+    ]} />
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Shopify Store Optimization</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl section__description">Your store is live but it's not performing the way it should. We find what's broken — speed, SEO, conversion — and fix it.</p>
+    </div>
+  </Section>
+
+  <!-- Services & Pricing -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Optimization Services</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {services.map((service) => (
+        <Card>
+          <h3 class="text-h3 section__heading">{service.name}</h3>
+          <p class="text-h2 text-accent section__heading">{service.price}</p>
+          <p class="text-body section__description">{service.description}</p>
+          <ul class="text-body-sm text-neutral-600 space-y-1">
+            {service.deliverables.map((item) => (
+              <li>&#10003; {item}</li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Common Problems -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Signs Your Store Needs Optimization</h2>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {problems.map((item) => (
+        <div>
+          <h3 class="text-h3 section__heading">{item.title}</h3>
+          <p class="text-body text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-8 animate-fade-in">
+      {faqs.map((faq) => (
+        <div>
+          <h3 class="text-h3 section__heading">{faq.question}</h3>
+          <p class="text-body text-neutral-600">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Want to Know What's Holding Your Store Back?"
+    description="Start with a Store Audit. We'll tell you exactly what to fix and how much it'll cost."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>
