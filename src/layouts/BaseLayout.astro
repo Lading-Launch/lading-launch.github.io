@@ -80,17 +80,33 @@ const ogImageUrl = new URL(ogImage, Astro.site).href;
     <script>
       const targets = document.querySelectorAll('.animate-fade-in, .animate-fade-in-stagger');
       if (targets.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const el = entry.target;
-              if (el.classList.contains('animate-fade-in')) el.classList.add('animate-fade-in--visible');
-              if (el.classList.contains('animate-fade-in-stagger')) el.classList.add('animate-fade-in-stagger--visible');
-              observer.unobserve(el);
-            }
-          });
-        }, { threshold: 0.1 });
-        targets.forEach(el => observer.observe(el));
+        // Elements already in viewport on load: show immediately, no animation
+        const viewH = window.innerHeight;
+        targets.forEach(el => {
+          if (el.getBoundingClientRect().top < viewH) {
+            el.classList.remove('animate-fade-in', 'animate-fade-in-stagger');
+            el.style.opacity = '1';
+            // Reveal stagger children too
+            el.querySelectorAll(':scope > *').forEach(child => {
+              child.style.opacity = '1';
+            });
+          }
+        });
+        // Remaining off-screen elements: animate on scroll
+        const remaining = document.querySelectorAll('.animate-fade-in, .animate-fade-in-stagger');
+        if (remaining.length > 0) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const el = entry.target;
+                if (el.classList.contains('animate-fade-in')) el.classList.add('animate-fade-in--visible');
+                if (el.classList.contains('animate-fade-in-stagger')) el.classList.add('animate-fade-in-stagger--visible');
+                observer.unobserve(el);
+              }
+            });
+          }, { threshold: 0.1 });
+          remaining.forEach(el => observer.observe(el));
+        }
       }
     </script>
   </body>
