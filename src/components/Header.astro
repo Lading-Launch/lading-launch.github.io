@@ -18,8 +18,8 @@ const currentPath = Astro.url.pathname;
   <div class="container">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="font-serif font-bold text-primary text-xl">
-        Lading &amp; Launch
+      <a href="/" aria-label="Lading & Launch — Home">
+        <img src="/images/lading-launch-logo.svg" alt="Lading & Launch" class="h-9" />
       </a>
 
       <!-- Desktop Nav -->
@@ -55,8 +55,8 @@ const currentPath = Astro.url.pathname;
 
 <!-- Full-screen mobile menu overlay -->
 <div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
-  <button id="mobile-menu-close" class="mobile-menu__close" aria-label="Close menu">
-    <span class="w-7 h-7" set:html={closeIcon} />
+  <button id="mobile-menu-close" class="mobile-menu__close z-10" aria-label="Close menu">
+    <span class="w-7 h-7 pointer-events-none" set:html={closeIcon} />
   </button>
   <div class="mobile-menu__inner">
     <nav class="flex flex-col items-center gap-7 mb-10">
@@ -82,7 +82,7 @@ const currentPath = Astro.url.pathname;
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
-  const close = document.getElementById('mobile-menu-close');
+  const closeBtn = document.getElementById('mobile-menu-close');
   const links = menu?.querySelectorAll('[data-mobile-link]');
 
   function openMenu() {
@@ -98,6 +98,6 @@ const currentPath = Astro.url.pathname;
   }
 
   toggle?.addEventListener('click', openMenu);
-  close?.addEventListener('click', closeMenu);
+  closeBtn?.addEventListener('click', closeMenu);
   links?.forEach(link => link.addEventListener('click', closeMenu));
 </script>
