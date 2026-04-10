@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import Grid from '../components/Grid.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lading & Launch",
+      "url": "https://ladingandlaunch.com",
+      "email": "hello@ladingandlaunch.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@ladingandlaunch.com",
+        "contactType": "sales",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://ladingandlaunch.com/contact/" }
+      ]
+    }
+  ]
+};
+
+const steps = [
+  {
+    title: 'We Review Your Message',
+    description: "We read every message personally. No auto-responders, no chatbots. You'll hear back from a real person within 24 hours.",
+  },
+  {
+    title: 'Discovery Call',
+    description: "We'll schedule a 30-minute call to learn about your brand, your Shopify challenges, and your goals. No pressure, no hard sell.",
+  },
+  {
+    title: 'Proposal & Pricing',
+    description: "If we're a good fit, you'll get a clear proposal with fixed pricing and a timeline. No surprises, no scope ambiguity.",
+  },
+];
+---
+
+<BaseLayout
+  title="Contact Lading & Launch — Book a Shopify Discovery Call"
+  description="Get in touch about your Shopify project. Send us a message or book a free discovery call directly. Store builds, optimization, migration, and management."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">Get in Touch</p>
+      <h1 class="text-display text-white section__heading">Let's Talk About Your Store</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl mx-auto">Whether you need a new Shopify store, want to improve an existing one, or just have questions — we'd love to hear from you.</p>
+    </div>
+  </Section>
+
+  <!-- Form + Calendly -->
+  <Section background="cream">
+    <Grid cols={2}>
+      <!-- Left: Contact Form -->
+      <div class="animate-fade-in">
+        <h2 class="text-h2 mb-6">Send a Message</h2>
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="form__group">
+            <label for="contact-name" class="form__label">Your Name</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              required
+              placeholder="Your full name"
+              class="form__input"
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="contact-email" class="form__label">Email Address</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              class="form__input"
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="contact-url" class="form__label">Store URL</label>
+            <input
+              type="url"
+              id="contact-url"
+              name="url"
+              placeholder="https://yourstore.myshopify.com"
+              class="form__input"
+            />
+            <p class="text-body-sm text-neutral-400 mt-1">Optional — helps us understand your current setup</p>
+          </div>
+
+          <div class="form__group">
+            <label for="contact-service" class="form__label">What Can We Help With?</label>
+            <select id="contact-service" name="service" required class="form__select">
+              <option value="" disabled selected>Select a service...</option>
+              <option value="new-store">New Shopify Store Build</option>
+              <option value="optimization">Store Optimization</option>
+              <option value="migration">Platform Migration</option>
+              <option value="management">Ongoing Management</option>
+              <option value="app-support">App Support</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+
+          <div class="form__group">
+            <label for="contact-message" class="form__label">Tell Us About Your Project</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              placeholder="What are you looking to build or fix? Any timeline or budget in mind?"
+              class="form__textarea"
+            ></textarea>
+          </div>
+
+          <!-- TODO: Build custom success/thank-you page to replace Formspree default -->
+          <Button variant="primary" size="lg" class="w-full">Send Message</Button>
+        </form>
+      </div>
+
+      <!-- Right: Calendly + Contact Info -->
+      <div class="animate-fade-in">
+        <h2 class="text-h2 mb-4">Or Book a Call Directly</h2>
+        <p class="text-body mb-6">Skip the form — pick a time that works for you and we'll have a 30-minute discovery call.</p>
+
+        <!-- Replace CALENDLY_URL with your Calendly scheduling link -->
+        <div class="calendly-embed">
+          <iframe
+            src="https://calendly.com/CALENDLY_URL"
+            width="100%"
+            height="400"
+            title="Schedule a discovery call"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <h3 class="text-h3 mt-8 mb-4">Other Ways to Reach Us</h3>
+        <a href="mailto:hello@ladingandlaunch.com" class="text-body text-primary-light">hello@ladingandlaunch.com</a>
+        <p class="text-body-sm text-neutral-500 mt-2">We typically respond within 24 hours.</p>
+      </div>
+    </Grid>
+  </Section>
+
+  <!-- What Happens Next -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">What Happens Next</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {steps.map((step) => (
+        <div class="text-center">
+          <h3 class="text-h3 section__heading">{step.title}</h3>
+          <p class="text-body text-neutral-600">{step.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Not Ready to Talk Yet?"
+    description="Browse our services, check out our apps, or read the Captain's Log. We'll be here when you're ready."
+    buttonText="View Services"
+    buttonHref="/services/"
+  />
+</BaseLayout>

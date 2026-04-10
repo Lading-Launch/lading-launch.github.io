@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://ladingandlaunch.com/terms/" }
+  ]
+};
+---
+
+<BaseLayout
+  title="Terms of Service | Lading & Launch"
+  description="Terms of service for using the Lading & Launch website and engaging our Shopify agency services."
+  schema={schema}
+  robots="noindex, follow"
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Terms of Service</h1>
+      <p class="text-body-sm text-neutral-300">Last updated: April 2026</p>
+    </div>
+  </Section>
+
+  <!-- Content -->
+  <Section background="white">
+    <article class="prose max-w-3xl mx-auto">
+      <p>These terms govern your use of ladingandlaunch.com, operated by Lading & Launch LLC. By using this website, you agree to these terms. If you don't agree, please don't use the site. This is written in plain language — not legalese.</p>
+
+      <h2>Services</h2>
+      <p>Lading & Launch provides Shopify store development, optimization, platform migration, ongoing management, and app development services. The content on this website describes our services in general terms.</p>
+      <p>Specific deliverables, timelines, pricing, and responsibilities for individual projects are defined in separate service agreements signed by both parties. Nothing on this website constitutes a binding offer or guarantee of specific results.</p>
+
+      <h2>Use of This Website</h2>
+      <p>You may use this website to learn about our services, read our blog, and contact us. You agree not to:</p>
+      <ul>
+        <li>Use the site for any unlawful purpose</li>
+        <li>Attempt to gain unauthorized access to any part of the site</li>
+        <li>Interfere with the site's operation or other users' access</li>
+        <li>Submit false information through the contact form</li>
+        <li>Scrape, crawl, or harvest content from the site without permission</li>
+      </ul>
+
+      <h2>Intellectual Property</h2>
+      <p>All content on this website — including text, design, code, blog posts, and graphics — is owned by Lading & Launch LLC unless otherwise noted. You may not reproduce, distribute, or create derivative works from our content without written permission.</p>
+      <p>Ownership of work produced for clients is governed by individual service agreements, not these website terms.</p>
+
+      <h2>Contact Form and Communications</h2>
+      <p>Information you submit through our contact form is used to respond to your inquiry and, if relevant, to scope potential work. Submitting a contact form does not create a client relationship, a contract, or an obligation for us to provide services.</p>
+      <p>We'll respond to inquiries as quickly as we can, typically within 24 hours on business days.</p>
+
+      <h2>Limitation of Liability</h2>
+      <p>This website and its content are provided "as is" for informational purposes. Our blog posts, guides, and recommendations are general advice based on our experience — they're not specific recommendations for your business or store.</p>
+      <p>Lading & Launch LLC is not liable for any decisions you make based on content found on this website. For advice specific to your situation, <a href="/contact/">get in touch</a> and we'll give you a proper assessment.</p>
+
+      <h2>Third-Party Links</h2>
+      <p>This website may contain links to third-party websites and services. We don't control those sites and aren't responsible for their content, privacy practices, or availability. A link doesn't mean we endorse the linked site.</p>
+
+      <h2>Changes to These Terms</h2>
+      <p>We may update these terms at any time. Changes take effect when posted on this page with an updated date. Your continued use of the site after changes are posted constitutes your acceptance of the updated terms.</p>
+
+      <h2>Governing Law</h2>
+      <p>These terms are governed by and construed in accordance with the laws of the State of Florida, United States. Any disputes arising from these terms or your use of the website will be resolved in the courts of Florida.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about these terms? Email <a href="mailto:hello@ladingandlaunch.com">hello@ladingandlaunch.com</a>.</p>
+    </article>
+  </Section>
+</BaseLayout>

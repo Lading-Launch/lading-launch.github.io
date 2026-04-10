@@ -1,0 +1,103 @@
+---
+import Button from './Button.astro';
+import menuIcon from '../assets/icons/menu.svg?raw';
+import closeIcon from '../assets/icons/close.svg?raw';
+
+const navLinks = [
+  { label: 'Services', path: '/services/' },
+  { label: 'Apps', path: '/apps/' },
+  { label: 'About', path: '/about/' },
+  { label: "Captain's Log", path: '/blog/' },
+  { label: 'Contact', path: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 bg-white border-b border-neutral-200">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" aria-label="Lading & Launch — Home">
+        <img src="/images/lading-launch-logo.svg" alt="Lading & Launch" class="h-9" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.path}
+            class:list={[
+              'nav__link',
+              currentPath.startsWith(link.path)
+                ? 'nav__link--active'
+                : 'nav__link--default',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        <Button variant="primary" size="sm" href="/contact/">Book a Call</Button>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <span class="w-6 h-6" set:html={menuIcon} />
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Full-screen mobile menu overlay -->
+<div id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" role="dialog" aria-modal="true">
+  <button id="mobile-menu-close" class="mobile-menu__close z-10" aria-label="Close menu">
+    <span class="w-7 h-7 pointer-events-none" set:html={closeIcon} />
+  </button>
+  <div class="mobile-menu__inner">
+    <nav class="flex flex-col items-center gap-7 mb-10">
+      {navLinks.map((link) => (
+        <a
+          href={link.path}
+          class:list={[
+            'mobile-menu__link',
+            currentPath.startsWith(link.path) && 'mobile-menu__link--active',
+          ]}
+          data-mobile-link
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <Button variant="primary" size="lg" href="/contact/" class="min-w-[240px] text-center" data-mobile-link>
+      Book a Call
+    </Button>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('mobile-menu-close');
+  const links = menu?.querySelectorAll('[data-mobile-link]');
+
+  function openMenu() {
+    menu?.classList.add('mobile-menu--open');
+    document.body.style.overflow = 'hidden';
+    toggle?.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    menu?.classList.remove('mobile-menu--open');
+    document.body.style.overflow = '';
+    toggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  toggle?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  links?.forEach(link => link.addEventListener('click', closeMenu));
+</script>

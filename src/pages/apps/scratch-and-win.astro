@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Grid from '../../components/Grid.astro';
+import Accordion from '../../components/Accordion.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'When will Scratch & Win be available?',
+    answer: "Scratch & Win is in development and launching on the Shopify App Store soon. Join the waitlist to be notified.",
+  },
+  {
+    question: 'How much will it cost?',
+    answer: "Pricing will be announced at launch. We're planning simple, affordable tiers starting under $20/month with a free trial.",
+  },
+  {
+    question: 'Can I customize the look of the scratch card?',
+    answer: "Yes. You'll be able to customize colors, text, and the rewards to match your brand. No generic-looking widgets.",
+  },
+  {
+    question: 'Will it slow down my store?',
+    answer: "No. Scratch & Win loads asynchronously and has zero impact on your store's page speed or Lighthouse scores.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Scratch & Win",
+      "description": "Gamified scratch cards that capture emails and drive urgency on Shopify stores.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Shopify",
+      "author": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://ladingandlaunch.com/apps/" },
+        { "@type": "ListItem", "position": 3, "name": "Scratch & Win", "item": "https://ladingandlaunch.com/apps/scratch-and-win/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const features = [
+  { title: 'Gamified Scratch Cards', description: "Visitors scratch to reveal a discount — it's physical, fun, and creates a dopamine hit that popups can't match. Higher engagement means more emails captured." },
+  { title: 'Built-In Email Capture', description: 'Every scratch requires an email address. No extra forms, no extra steps. The game IS the capture mechanism.' },
+  { title: 'Customizable Rewards', description: 'Set your own discount tiers and win probabilities. 10% for everyone? A rare 30% for lucky scratchers? You control the experience.' },
+  { title: 'Mobile-First Design', description: 'Scratch cards work beautifully on touch screens. Over 70% of your traffic is mobile — this is built for them.' },
+];
+
+const audiences = [
+  { title: 'DTC Brands', description: 'Brands that want to grow their email list with higher opt-in rates than traditional popups.' },
+  { title: 'Stores Running Promotions', description: 'Stores that run seasonal sales or flash promotions and want to create urgency and excitement.' },
+  { title: 'High-Traffic Stores', description: 'Stores with significant traffic that need to convert more visitors into subscribers before they leave.' },
+];
+---
+
+<BaseLayout
+  title="Scratch & Win — Gamified Email Capture for Shopify | Lading & Launch"
+  description="Replace boring popups with gamified scratch cards. Capture emails, drive urgency, and create moments customers remember. Scratch & Win by Lading & Launch — coming soon."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Apps', href: '/apps/' },
+      { label: 'Scratch & Win' },
+    ]} />
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">Coming Soon</p>
+      <h1 class="text-display text-white section__heading">Scratch &amp; Win</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl mx-auto section__description">Email capture that people actually enjoy. Replace boring popups with gamified scratch cards that capture emails and create urgency — in one interaction.</p>
+      <Button variant="primary" size="lg" href="/contact/">Join the Waitlist</Button>
+    </div>
+  </Section>
+
+  <!-- The Problem -->
+  <Section background="cream">
+    <div class="animate-fade-in">
+      <h2 class="text-h2 section__heading">Popups Are Broken</h2>
+      <p class="text-body-lg text-neutral-700 max-w-2xl">Every Shopify store has a popup. Most visitors close it immediately. The "spin the wheel" widgets from 2019 aren't fooling anyone anymore. You're spending money driving traffic to your store, and your email capture tool is actively annoying the people you paid to bring there. You need something that makes visitors want to engage, not reach for the X button.</p>
+    </div>
+  </Section>
+
+  <!-- Features -->
+  <Section background="white">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">What Scratch &amp; Win Does</h2>
+      <p class="text-body-lg text-neutral-600 section__description">A scratch card overlay that turns email capture into a game.</p>
+    </div>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {features.map((feature) => (
+        <div>
+          <h3 class="text-h3 section__heading">{feature.title}</h3>
+          <p class="text-body text-neutral-600">{feature.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Who It's For -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Built For</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {audiences.map((audience) => (
+        <div class="text-center">
+          <h3 class="text-h3 section__heading">{audience.title}</h3>
+          <p class="text-body text-neutral-600">{audience.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <Accordion items={faqs} />
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Want to Try Scratch & Win?"
+    description="Join the waitlist and be first to know when it launches."
+    buttonText="Join the Waitlist"
+    buttonHref="/contact/"
+  />
+</BaseLayout>

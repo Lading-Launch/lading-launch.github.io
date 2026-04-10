@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Grid from '../components/Grid.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lading & Launch",
+      "url": "https://ladingandlaunch.com",
+      "description": "Shopify-focused e-commerce agency and app development company.",
+      "email": "hello@ladingandlaunch.com",
+      "foundingDate": "2026",
+      "sameAs": []
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://ladingandlaunch.com/about/" }
+      ]
+    }
+  ]
+};
+
+const differentiators = [
+  {
+    title: 'Shopify Is All We Do',
+    description: "We turned down generalist work to focus exclusively on Shopify. That means every tool in our stack, every workflow, and every hour of learning is invested in one platform. You get a specialist, not a generalist who googles Liquid syntax between calls.",
+  },
+  {
+    title: 'Pricing on the Website',
+    description: "Our prices are published. You can see what a store build, optimization, or migration costs before you ever talk to us. No discovery call required just to find out if you can afford it.",
+  },
+  {
+    title: 'Small on Purpose',
+    description: "We're a lean operation. That means your project isn't handed off to a junior developer you've never met. The person you talk to is the person who builds your store. Faster communication, fewer handoffs, better results.",
+  },
+  {
+    title: 'We Build Tools, Not Just Stores',
+    description: "Most agencies only implement. We also build Shopify apps — which means we understand the platform at a deeper level than someone who only customizes themes. That product engineering mindset shows in the stores we build.",
+  },
+];
+
+const techStack = [
+  { title: 'Shopify & Shopify Plus', description: 'Store builds, migrations, custom development' },
+  { title: 'Liquid', description: "Shopify's templating language — our daily driver" },
+  { title: 'JavaScript & TypeScript', description: 'Custom functionality and app development' },
+  { title: 'React', description: 'Shopify app frontends and custom storefronts' },
+  { title: 'Tailwind CSS', description: 'Fast, consistent, responsive styling' },
+  { title: 'Shopify APIs', description: 'Storefront, Admin, Checkout, and Payments APIs' },
+];
+---
+
+<BaseLayout
+  title="About Lading & Launch — Shopify Agency & App Development"
+  description="A Shopify-focused agency built by a developer who decided to go all-in on the platform. Store builds, optimization, migration, management, and custom apps."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">About Us</p>
+      <h1 class="text-display text-white section__heading">About Lading &amp; Launch</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl mx-auto">A Shopify agency built by a developer who decided to stop doing everything and go all-in on the platform that matters most for e-commerce.</p>
+    </div>
+  </Section>
+
+  <!-- The Story -->
+  <Section background="cream">
+    <div class="max-w-3xl mx-auto animate-fade-in">
+      <h2 class="text-h2 section__heading">The Short Version</h2>
+      <div class="prose">
+        <p class="text-body-lg text-neutral-700">Lading &amp; Launch exists because most Shopify merchants are stuck between two bad options. They can hire a generalist web agency that treats Shopify as one of twenty platforms they "support" — or they can hire a freelancer and hope for the best. We wanted to build the third option: a focused Shopify partner with real development depth and pricing you can see before you pick up the phone.</p>
+        <p class="text-body-lg text-neutral-700">We only work with Shopify. Not WordPress, not Wix, not Squarespace. Every project, every line of code, every optimization runs through the same platform. That kind of focus means we know Shopify inside and out — from Liquid templating to Shopify Plus customization to the edge cases of the checkout API that most developers haven't encountered yet.</p>
+        <p class="text-body-lg text-neutral-700">We also build Shopify apps. DealSnap and Scratch &amp; Win are in development right now because we kept seeing the same problems across merchant stores — limited discount flexibility and email capture tools that annoy visitors more than they convert them. Building apps isn't a side project for us. It's proof that we understand Shopify at a product level, not just an implementation level.</p>
+        <p class="text-body-lg text-neutral-700">We're a new agency — and we're not going to pretend otherwise. We don't have 200 case studies or a wall of logos. What we do have is deep Shopify expertise, transparent pricing, and a commitment to doing excellent work for every client. Especially the first ones.</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- How We're Different -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">How We Work</h2>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {differentiators.map((item) => (
+        <div>
+          <h3 class="text-h3 section__heading">{item.title}</h3>
+          <p class="text-body text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Technical Expertise -->
+  <Section background="cream">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">What We Work With</h2>
+      <p class="section__description text-body-lg text-neutral-600">The tools and technologies behind every project.</p>
+    </div>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {techStack.map((item) => (
+        <div class="text-center">
+          <h3 class="text-h4 section__heading">{item.title}</h3>
+          <p class="text-body-sm text-neutral-500">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Shopify Partners -->
+  <Section background="white">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">Official Shopify Partner</h2>
+      <p class="text-body-lg text-neutral-700 max-w-2xl mx-auto">Lading &amp; Launch is a member of the Shopify Partners program. That means we have access to development stores, partner-exclusive tools, and direct support from Shopify's partner team. When you work with us, you're working with a partner Shopify recognizes.</p>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Ready to Work Together?"
+    description="Book a free discovery call and let's talk about what your Shopify store needs."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>

@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Grid from '../../components/Grid.astro';
+import Accordion from '../../components/Accordion.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'When will DealSnap be available?',
+    answer: "DealSnap is currently in development and will be available on the Shopify App Store soon. Join the waitlist to be notified when it launches.",
+  },
+  {
+    question: 'How much will it cost?',
+    answer: "Pricing will be announced at launch. We're planning affordable tiers starting under $30/month, with a free trial to start.",
+  },
+  {
+    question: 'Will it work with my existing Shopify theme?',
+    answer: "Yes. DealSnap works with any Shopify theme — no custom code or theme modifications required.",
+  },
+  {
+    question: "Does it conflict with Shopify's built-in discounts?",
+    answer: "No. DealSnap is designed to work alongside Shopify's native discount system, not replace it.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "DealSnap",
+      "description": "Create mix-and-match bundles, quantity breaks, and automatic discount combinations on Shopify.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Shopify",
+      "author": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://ladingandlaunch.com/apps/" },
+        { "@type": "ListItem", "position": 3, "name": "DealSnap", "item": "https://ladingandlaunch.com/apps/dealsnap/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const features = [
+  { title: 'Mix & Match Bundles', description: 'Let customers build their own bundles across products or collections. Buy any 3 items from a collection and get 15% off — DealSnap handles the math.' },
+  { title: 'Quantity Breaks', description: 'Reward bulk purchases. Buy 2 get 10% off, buy 5 get 20% off. Automatic tiered pricing that encourages larger orders.' },
+  { title: 'Automatic Discount Combinations', description: "Stack multiple discount rules without conflicts. Shopify limits you to one automatic discount — DealSnap doesn't." },
+  { title: 'Simple Setup', description: "No code required. Set up discount rules through a clean admin interface in minutes, not hours. Works with your existing Shopify theme." },
+];
+
+const audiences = [
+  { title: 'DTC Brands', description: 'Brands selling direct-to-consumer that want to increase average order value through smart bundling.' },
+  { title: 'Subscription Stores', description: 'Stores with subscription products that need flexible bundle-and-save pricing.' },
+  { title: 'High-SKU Stores', description: 'Stores with large catalogs that want to run mix-and-match promotions across collections.' },
+];
+---
+
+<BaseLayout
+  title="DealSnap — Flexible Shopify Discounts & Bundles | Lading & Launch"
+  description="Create mix-and-match bundles, quantity breaks, and automatic discount combinations on Shopify. No workarounds. DealSnap by Lading & Launch — coming soon."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Apps', href: '/apps/' },
+      { label: 'DealSnap' },
+    ]} />
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">Coming Soon</p>
+      <h1 class="text-display text-white section__heading">DealSnap</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl mx-auto section__description">Flexible discounts that actually work. Create mix-and-match bundles, quantity breaks, and automatic discount combinations — without fighting Shopify's native limitations.</p>
+      <Button variant="primary" size="lg" href="/contact/">Join the Waitlist</Button>
+    </div>
+  </Section>
+
+  <!-- The Problem -->
+  <Section background="cream">
+    <div class="animate-fade-in">
+      <h2 class="text-h2 section__heading">Shopify's Discount System Has Limits</h2>
+      <p class="text-body-lg text-neutral-700 max-w-2xl">Shopify's built-in discount system is fine for simple use cases — a percentage off, a fixed amount, buy X get Y. But the moment you need mix-and-match bundles, quantity breaks across collections, or stacking multiple automatic discounts, you hit walls. Merchants end up duct-taping workarounds together or paying for bloated apps that do ten things they don't need.</p>
+    </div>
+  </Section>
+
+  <!-- Features -->
+  <Section background="white">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">What DealSnap Does</h2>
+      <p class="text-body-lg text-neutral-600 section__description">One app. Flexible discount rules. No workarounds.</p>
+    </div>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {features.map((feature) => (
+        <div>
+          <h3 class="text-h3 section__heading">{feature.title}</h3>
+          <p class="text-body text-neutral-600">{feature.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Who It's For -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Built For</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {audiences.map((audience) => (
+        <div class="text-center">
+          <h3 class="text-h3 section__heading">{audience.title}</h3>
+          <p class="text-body text-neutral-600">{audience.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <Accordion items={faqs} />
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Want to Try DealSnap?"
+    description="Join the waitlist and be first to know when it launches."
+    buttonText="Join the Waitlist"
+    buttonHref="/contact/"
+  />
+</BaseLayout>

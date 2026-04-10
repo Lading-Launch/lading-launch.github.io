@@ -1,0 +1,80 @@
+---
+const services = [
+  { label: 'Store Builds', href: '/services/store-builds/' },
+  { label: 'Optimization', href: '/services/optimization/' },
+  { label: 'Migration', href: '/services/migration/' },
+  { label: 'Management', href: '/services/management/' },
+];
+
+const company = [
+  { label: 'About', href: '/about/' },
+  { label: "Captain's Log", href: '/blog/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const apps = [
+  { label: 'DealSnap', href: '/apps/dealsnap/' },
+  { label: 'Scratch & Win', href: '/apps/scratch-and-win/' },
+];
+---
+
+<footer class="footer">
+  <div class="container py-12 md:py-16">
+    <!-- Top Section -->
+    <div class="grid grid--4col">
+      <!-- Brand -->
+      <div>
+        <img src="/images/lading-launch-logo.svg" alt="Lading & Launch" class="h-9 mb-2" />
+        <p class="text-neutral-300 text-sm mb-4">Shopify stores built to sell.</p>
+        <a href="mailto:hello@ladingandlaunch.com" class="footer__link">
+          hello@ladingandlaunch.com
+        </a>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="footer__heading">Services</h3>
+        <ul class="space-y-2">
+          {services.map((link) => (
+            <li>
+              <a href={link.href} class="footer__link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="footer__heading">Company</h3>
+        <ul class="space-y-2">
+          {company.map((link) => (
+            <li>
+              <a href={link.href} class="footer__link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Apps -->
+      <div>
+        <h3 class="footer__heading">Apps</h3>
+        <ul class="space-y-2">
+          {apps.map((link) => (
+            <li>
+              <a href={link.href} class="footer__link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="border-t border-white/20 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-neutral-400 text-sm">&copy; 2026 Lading &amp; Launch LLC. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="/privacy/" class="footer__link">Privacy Policy</a>
+        <a href="/terms/" class="footer__link">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

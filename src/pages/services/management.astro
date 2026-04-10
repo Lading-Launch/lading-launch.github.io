@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import Accordion from '../../components/Accordion.astro';
+
+const faqs = [
+  {
+    question: 'Can I cancel anytime?',
+    answer: 'Yes. Our management plans are month-to-month with no long-term contracts. Cancel anytime with 30 days notice.',
+  },
+  {
+    question: 'What counts toward my dev hours?',
+    answer: 'Any development work on your store — new features, design changes, bug fixes, app installations, and custom code. We track hours and report them monthly.',
+  },
+  {
+    question: 'What if I need more hours than my plan includes?',
+    answer: 'Additional hours are billed at $100/hour. Or you can upgrade to a higher plan if you consistently need more time.',
+  },
+  {
+    question: 'Do I need a management plan if you built my store?',
+    answer: 'You don\'t need one, but we recommend it. Shopify stores need ongoing updates, security monitoring, and optimization. Most clients who skip management come back within 3 months.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Monthly Shopify Management",
+      "description": "Ongoing Shopify store management, updates, monitoring, and optimization with monthly dev hours included.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "300",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "300", "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ladingandlaunch.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Management", "item": "https://ladingandlaunch.com/services/management/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const tiers = [
+  {
+    name: 'Essential',
+    price: '$300/mo',
+    bestFor: 'Stores that need basic maintenance and peace of mind',
+    includes: [
+      'Shopify updates and security monitoring',
+      'Uptime monitoring',
+      'Basic theme tweaks',
+      '2 hours/month dev time',
+      'Email support',
+    ],
+    recommended: false,
+  },
+  {
+    name: 'Growth',
+    price: '$500/mo',
+    bestFor: 'Stores that need active optimization and reporting',
+    includes: [
+      'Everything in Essential',
+      'Performance monitoring',
+      'Monthly analytics report',
+      '5 hours/month dev time',
+      'Priority support',
+    ],
+    recommended: true,
+  },
+  {
+    name: 'Scale',
+    price: '$1,000/mo',
+    bestFor: 'Stores that need a strategic partner, not just maintenance',
+    includes: [
+      'Everything in Growth',
+      'Conversion optimization',
+      'A/B testing',
+      '10 hours/month dev time',
+      'Bi-weekly strategy calls',
+    ],
+    recommended: false,
+  },
+];
+
+const covered = [
+  { title: 'Shopify Updates', description: 'We apply Shopify platform updates, theme updates, and app updates so nothing breaks unexpectedly.' },
+  { title: 'Security Monitoring', description: 'We monitor your store for security issues, SSL problems, and suspicious activity.' },
+  { title: 'Performance Tracking', description: 'Monthly reports on speed, uptime, and key metrics so you always know how your store is performing.' },
+  { title: 'Bug Fixes & Tweaks', description: 'Small changes, fixes, and improvements — handled within your monthly dev hours.' },
+  { title: 'Conversion Optimization', description: 'On Growth and Scale plans, we actively test and improve your store\'s conversion rate.' },
+  { title: 'Strategic Guidance', description: 'On the Scale plan, we\'re not just fixing things — we\'re helping you plan what to build next.' },
+];
+---
+
+<BaseLayout
+  title="Shopify Monthly Management & Support — From $300/mo | Lading & Launch"
+  description="Ongoing Shopify store management, updates, monitoring, and optimization. Monthly dev hours included. Plans from $300/mo."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services/' },
+      { label: 'Management' },
+    ]} />
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Monthly Shopify Management</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl">Your store doesn't stop needing attention after launch. We keep it updated, fast, and optimized every month — so you can focus on selling.</p>
+    </div>
+  </Section>
+
+  <!-- Pricing Tiers -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Management Plans</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {tiers.map((tier) => (
+        <Card class:list={[tier.recommended && 'border-t-4 border-accent relative']}>
+          {tier.recommended && (
+            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 inline-block mb-3">Recommended</span>
+          )}
+          <h3 class="text-h3 section__heading">{tier.name}</h3>
+          <p class="text-h2 text-accent section__heading">{tier.price}</p>
+          <p class="text-body-sm text-neutral-500 italic mb-4">Best for: {tier.bestFor}</p>
+          <ul class="text-body space-y-2">
+            {tier.includes.map((item) => (
+              <li>&#10003; {item}</li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- What's Covered -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">What We Handle Every Month</h2>
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {covered.map((item) => (
+        <div>
+          <h3 class="text-h4 section__heading">{item.title}</h3>
+          <p class="text-body text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <Accordion items={faqs} />
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Want Ongoing Support for Your Store?"
+    description="Book a call and we'll recommend the right plan based on your store's needs."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>

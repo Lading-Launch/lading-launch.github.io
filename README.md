@@ -1,73 +1,51 @@
-# Welcome to your Lovable project
+# Lading & Launch
 
-## Project info
+Website for a Shopify-focused e-commerce agency and app company.
 
-**URL**: https://lovable.dev/projects/36e6a411-8d13-422a-ad79-6ddd091fea14
+**Domain:** [ladingandlaunch.com](https://ladingandlaunch.com)
 
-## How can I edit this code?
+## Tech Stack
 
-There are several ways of editing your application.
+- **Framework:** Astro 6 (static SSG)
+- **Styling:** Tailwind CSS 4 via `@tailwindcss/vite`
+- **Content:** Astro Content Collections (Markdown)
+- **Forms:** Formspree
+- **Hosting:** Vercel (planned — currently GitHub Pages on `main`)
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/36e6a411-8d13-422a-ad79-6ddd091fea14) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+npm install
+npm run dev       # Dev server at localhost:4321
+npm run build     # Static build to dist/
+npm run preview   # Preview the built site
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/   # Reusable Astro components (Header, Footer, Button, Card, etc.)
+├── content/      # Content collections (blog posts in Markdown)
+├── layouts/      # BaseLayout with SEO meta, OG tags, JSON-LD
+├── pages/        # Route pages (index, design-system, etc.)
+└── styles/       # global.css — Tailwind config, BEM classes, animations
+```
 
-**Use GitHub Codespaces**
+## Design System
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+A living reference page at `/design-system/` renders every component, color token, typography level, and animation. It's excluded from search engines (`noindex, nofollow`).
 
-## What technologies are used for this project?
+## CSS Architecture
 
-This project is built with:
+The project uses BEM-named classes defined in `src/styles/global.css` via Tailwind `@apply`. Components use semantic class names (`.btn--primary`, `.card`, `.section--cream`) rather than long utility strings in markup. One-off layout utilities are still written as inline Tailwind where appropriate.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Branch Strategy
 
-## How can I deploy this project?
+- `main` — Current live site (legacy React SPA). Will be replaced when the Astro rebuild is complete.
+- `develop` — Astro rebuild in progress. All new work merges here first.
+- `feature/*` — Feature branches off `develop` for each piece of work.
 
-Simply open [Lovable](https://lovable.dev/projects/36e6a411-8d13-422a-ad79-6ddd091fea14) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Currently deployed via GitHub Pages from `main`. The Astro rebuild on `develop` will migrate to Vercel once it's ready to go live.

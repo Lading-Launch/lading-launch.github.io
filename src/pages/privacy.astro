@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://ladingandlaunch.com/privacy/" }
+  ]
+};
+---
+
+<BaseLayout
+  title="Privacy Policy | Lading & Launch"
+  description="Privacy policy for Lading & Launch — how we collect, use, and protect your information."
+  schema={schema}
+  robots="noindex, follow"
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Privacy Policy</h1>
+      <p class="text-body-sm text-neutral-300">Last updated: April 2026</p>
+    </div>
+  </Section>
+
+  <!-- Content -->
+  <Section background="white">
+    <article class="prose max-w-3xl mx-auto">
+      <p>This privacy policy describes how Lading & Launch LLC ("we," "us," or "our") collects, uses, and protects your information when you visit ladingandlaunch.com. This is not a legal document — it's written in plain language so you can actually understand it.</p>
+
+      <h2>Information We Collect</h2>
+
+      <h3>Information You Provide</h3>
+      <p>When you fill out our contact form, you provide your name, email address, and optionally your store URL and project details. When you book a call through Calendly, you provide your name, email, and scheduling preferences. We only collect what you give us directly.</p>
+
+      <h3>Information Collected Automatically</h3>
+      <p>We use Google Analytics 4 (GA4) to understand how people use our website. This collects anonymous data like pages visited, time on site, device type, browser, and referral source. This helps us improve the site — we don't use it to identify individuals.</p>
+      <p>We do not sell products directly through this website, so no payment card information is collected on ladingandlaunch.com. Payments for services are handled through Stripe invoicing, which has its own privacy protections.</p>
+
+      <h2>How We Use Your Information</h2>
+      <ul>
+        <li>To respond to your inquiries and contact form submissions</li>
+        <li>To provide the services you've requested</li>
+        <li>To improve our website and understand how visitors use it</li>
+        <li>To send relevant updates about our services or apps — only if you've opted in</li>
+      </ul>
+      <p>We don't sell your information. We don't share it with anyone except the third-party services listed below, and only as necessary to operate our business.</p>
+
+      <h2>Third-Party Services</h2>
+      <p>We use the following third-party services that may process your data:</p>
+      <ul>
+        <li><strong>Google Analytics 4</strong> — Website analytics. Collects anonymous usage data via cookies. <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+        <li><strong>Formspree</strong> — Contact form processing. Receives the data you submit through our contact form. <a href="https://formspree.io/legal/privacy-policy">Formspree Privacy Policy</a></li>
+        <li><strong>Calendly</strong> — Appointment scheduling. Receives your name, email, and scheduling data when you book a call. <a href="https://calendly.com/privacy">Calendly Privacy Policy</a></li>
+        <li><strong>Stripe</strong> — Payment processing for services. Handles invoicing and payment collection. <a href="https://stripe.com/privacy">Stripe Privacy Policy</a></li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>Google Analytics 4 uses cookies to collect anonymous analytics data. We do not use advertising cookies, retargeting cookies, or any cookies for marketing purposes.</p>
+      <p>You can disable cookies in your browser settings. Disabling cookies won't affect your ability to use this website — you just won't be included in our analytics data.</p>
+
+      <h2>Data Retention</h2>
+      <p>Contact form submissions are retained for the duration of our business relationship and a reasonable period afterward. Analytics data is retained according to Google Analytics default settings (14 months). Calendly scheduling data is retained per Calendly's policies.</p>
+
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Request access to the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your data</li>
+        <li>Withdraw consent for any processing based on consent</li>
+      </ul>
+      <p>To exercise any of these rights, email <a href="mailto:hello@ladingandlaunch.com">hello@ladingandlaunch.com</a>. We'll respond within 30 days.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>This website is not directed at children under 13. We do not knowingly collect personal information from children. If you believe we've collected data from a child, contact us and we'll delete it immediately.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated date at the top. We won't make material changes without making them clear.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this privacy policy? Email <a href="mailto:hello@ladingandlaunch.com">hello@ladingandlaunch.com</a>.</p>
+    </article>
+  </Section>
+</BaseLayout>

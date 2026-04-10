@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Lading & Launch",
+      "url": "https://ladingandlaunch.com",
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "DealSnap", "applicationCategory": "BusinessApplication" } },
+        { "@type": "Offer", "itemOffered": { "@type": "SoftwareApplication", "name": "Scratch & Win", "applicationCategory": "BusinessApplication" } }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://ladingandlaunch.com/apps/" }
+      ]
+    }
+  ]
+};
+
+const apps = [
+  {
+    title: 'DealSnap',
+    tagline: 'Flexible discounts that actually work.',
+    description: "Create mix-and-match bundles, quantity breaks, and automatic discount combinations — without the workarounds Shopify's native system forces you into.",
+    features: [
+      'Mix-and-match bundle discounts',
+      'Quantity break pricing',
+      'Automatic discount combinations',
+      'Works with existing Shopify discount codes',
+    ],
+    href: '/apps/dealsnap/',
+  },
+  {
+    title: 'Scratch & Win',
+    tagline: 'Email capture that people actually enjoy.',
+    description: 'Replace boring popups with gamified scratch cards. Visitors scratch to reveal a discount — you capture their email and create a moment they remember.',
+    features: [
+      'Gamified scratch card overlays',
+      'Email capture built in',
+      'Customizable discount reveals',
+      'Mobile-optimized experience',
+    ],
+    href: '/apps/scratch-and-win/',
+  },
+];
+---
+
+<BaseLayout
+  title="Shopify Apps — DealSnap & Scratch & Win | Lading & Launch"
+  description="Shopify apps built by the team that builds your store. DealSnap for flexible discounts and bundles. Scratch & Win for gamified email capture. Coming soon."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary" hero>
+    <div class="text-center animate-fade-in">
+      <p class="text-label text-accent mb-4">Our Apps</p>
+      <h1 class="text-display text-white section__heading">Shopify Apps Built by Store Builders</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl mx-auto">We don't just build stores — we build the tools merchants need. Our apps solve real problems that we see every day working with Shopify brands.</p>
+    </div>
+  </Section>
+
+  <!-- App Cards -->
+  <Section background="cream">
+    <Grid cols={2} class="animate-fade-in-stagger">
+      {apps.map((app) => (
+        <Card href={app.href}>
+          <p class="text-label text-accent mb-3">Coming Soon</p>
+          <h2 class="card__title text-h2">{app.title}</h2>
+          <p class="text-body-lg text-neutral-700 section__heading">{app.tagline}</p>
+          <p class="card__description">{app.description}</p>
+          <ul class="text-body-sm text-neutral-600 space-y-1 mb-4">
+            {app.features.map((feature) => (
+              <li>&#10003; {feature}</li>
+            ))}
+          </ul>
+          <span class="text-body-sm text-primary-light font-semibold">Learn More &rarr;</span>
+        </Card>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- Why We Build Apps -->
+  <Section background="white">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">Why an Agency Builds Apps</h2>
+      <p class="text-body-lg text-neutral-700 max-w-2xl mx-auto">Working with Shopify merchants every day, we see the same problems over and over. Instead of recommending third-party apps that half-solve the problem, we build our own. That deeper product engineering expertise shows in every store we build too.</p>
+    </div>
+  </Section>
+
+  <!-- Early Access -->
+  <Section background="cream">
+    <div class="text-center animate-fade-in">
+      <h2 class="text-h2 section__heading">Want Early Access?</h2>
+      <p class="text-body-lg text-neutral-700 max-w-2xl mx-auto section__description">Both apps are in development and launching soon. If you're a Shopify merchant who wants to try them first, reach out — we're looking for beta testers.</p>
+      <Button variant="primary" href="/contact/">Get in Touch</Button>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Need a Store to Go With That App?"
+    description="We build Shopify stores too. Check out our services or book a call."
+    buttonText="View Services"
+    buttonHref="/services/"
+  />
+</BaseLayout>
