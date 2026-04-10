@@ -145,9 +145,61 @@
   @apply font-sans text-sm font-medium uppercase tracking-wide;
 }
 
-/* Prose spacing */
+/* Prose — blog article typography */
+.prose h2 {
+  @apply font-serif text-xl md:text-3xl font-semibold leading-snug mt-12 mb-4;
+}
+
+.prose h3 {
+  @apply font-sans text-lg md:text-xl font-semibold leading-snug mt-8 mb-3;
+}
+
+.prose p {
+  @apply font-sans text-base leading-relaxed text-neutral-700;
+}
+
 .prose p + p {
   @apply mt-6;
+}
+
+.prose ul {
+  @apply text-base leading-relaxed text-neutral-700 pl-6 mb-6 list-disc;
+}
+
+.prose ol {
+  @apply text-base leading-relaxed text-neutral-700 pl-6 mb-6 list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose strong {
+  @apply font-semibold text-neutral-800;
+}
+
+.prose a {
+  @apply text-primary-light underline hover:text-primary;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-accent pl-6 italic text-neutral-600 my-6;
+}
+
+.prose code {
+  @apply bg-neutral-100 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-neutral-900 text-neutral-100 p-6 rounded-xl overflow-x-auto my-6;
+}
+
+.prose img {
+  @apply rounded-xl my-8;
+}
+
+.prose hr {
+  @apply border-neutral-200 my-8;
 }
 
 /* ============================================================
@@ -162,9 +214,8 @@
   @apply border-b border-neutral-200;
 }
 
-.accordion__item[open] .accordion__question::after {
-  transform: rotate(225deg);
-  @apply mt-1;
+.accordion__item[open] .accordion__chevron {
+  @apply rotate-180;
 }
 
 .accordion__question {
@@ -175,9 +226,8 @@
   @apply hidden;
 }
 
-.accordion__question::after {
-  content: '';
-  @apply w-2.5 h-2.5 border-r-2 border-b-2 border-current rotate-45 transition-transform duration-200 ease-out shrink-0 -mt-1;
+.accordion__chevron {
+  @apply w-5.5 h-5.5 shrink-0 transition-transform duration-200 ease-out text-neutral-700 mr-2;
 }
 
 .accordion__answer {
