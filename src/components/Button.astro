@@ -2,14 +2,15 @@
 interface Props {
   variant?: 'primary' | 'secondary' | 'secondary-on-dark' | 'ghost' | 'white';
   href?: string;
-  size?: 'base' | 'lg';
+  size?: 'sm' | 'base' | 'lg';
   class?: string;
 }
 
 const { variant = 'primary', href, size = 'base', class: className } = Astro.props;
 
 const variantClass = `btn--${variant}`;
-const sizeClass = size === 'lg' ? 'btn--lg' : '';
+const sizeClasses: Record<string, string> = { sm: 'btn--sm', base: '', lg: 'btn--lg' };
+const sizeClass = sizeClasses[size] || '';
 ---
 
 {href ? (

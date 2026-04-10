@@ -313,6 +313,10 @@
   @apply shadow-[0_1px_4px_rgba(255,255,255,0.1)];
 }
 
+.btn--sm {
+  @apply px-4 py-2 text-sm min-h-0;
+}
+
 .btn--lg {
   @apply px-8 py-4 text-lg;
 }
