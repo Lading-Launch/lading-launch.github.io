@@ -5,6 +5,7 @@ import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import Grid from '../components/Grid.astro';
 import CTABanner from '../components/CTABanner.astro';
+import Accordion from '../components/Accordion.astro';
 
 const colors = {
   Primary: [
@@ -151,8 +152,19 @@ const buttonSizes = ['base', 'lg'] as const;
     </Grid>
   </Section>
 
-  <!-- Section 5: Grid Layouts -->
+  <!-- Section 5: Accordion -->
   <Section background="white">
+    <h2 class="text-h2 section__heading">Accordion</h2>
+    <p class="font-mono text-xs text-neutral-500 section__description"><code>.accordion</code> — native &lt;details&gt;/&lt;summary&gt; elements, zero JS</p>
+    <Accordion items={[
+      { question: 'How long does a project take?', answer: 'Timelines vary by project scope. Starter stores take 1-2 weeks, while complex builds can take 4-8 weeks. We provide a specific timeline during discovery.' },
+      { question: 'Do you offer ongoing support?', answer: 'Yes. We offer monthly management plans starting at $300/mo that include updates, monitoring, and dev hours.' },
+      { question: 'What platforms do you work with?', answer: 'Shopify only. We specialize in Shopify and Shopify Plus — that focus means deeper expertise for your store.' },
+    ]} />
+  </Section>
+
+  <!-- Section 6: Grid Layouts -->
+  <Section background="cream">
     <h2 class="text-h2 section__heading">Grid Layouts</h2>
 
     <h3 class="text-h3 mb-2">2 Columns</h3>
