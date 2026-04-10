@@ -95,33 +95,6 @@
   @apply opacity-30;
 }
 
-/* ============================================================
-   PROCESS TIMELINE
-   ============================================================ */
-
-.process-step {
-  @apply flex items-center gap-6 md:gap-8 mb-10;
-}
-
-.process-step:last-child {
-  @apply mb-0;
-}
-
-.process-step__number {
-  @apply w-14 h-14 shrink-0 rounded-full border-2 border-accent text-accent flex items-center justify-center font-serif text-xl font-bold leading-none pb-0.5;
-}
-
-.process-step__content {
-  @apply flex-1;
-}
-
-.process-step__title {
-  @apply font-sans text-lg md:text-xl font-semibold leading-snug mb-3;
-}
-
-.process-step__description {
-  @apply text-base leading-relaxed text-neutral-600;
-}
 
 /* ============================================================
    BLOG FEATURED IMAGE
