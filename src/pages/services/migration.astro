@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Card from '../../components/Card.astro';
+import Grid from '../../components/Grid.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'Will I lose my Google rankings when I migrate?',
+    answer: 'Not if it\'s done right. We create 301 redirects for every URL on your current site, which tells Google your content has moved. Rankings typically stabilize within 2-4 weeks.',
+  },
+  {
+    question: 'How long does a migration take?',
+    answer: 'Simple migrations (under 500 products, no complex integrations) take 1-2 weeks. Complex migrations with custom integrations can take 3-6 weeks.',
+  },
+  {
+    question: 'Will my store be down during migration?',
+    answer: 'No. We build your new Shopify store while your old store stays live. We switch over once the new store is tested and ready — downtime is typically under an hour.',
+  },
+  {
+    question: 'Can I change my store design during migration?',
+    answer: 'Yes — in fact, we recommend it. Every migration includes a new theme build on Shopify, so it\'s the perfect time for a fresh design.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Shopify Platform Migration",
+      "description": "Migrate your store to Shopify from WooCommerce, Wix, Squarespace, or BigCommerce with zero data loss.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Lading & Launch",
+        "url": "https://ladingandlaunch.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "1500",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1500", "priceCurrency": "USD" }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ladingandlaunch.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ladingandlaunch.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Migration", "item": "https://ladingandlaunch.com/services/migration/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    }
+  ]
+};
+
+const platforms = [
+  {
+    name: 'From WooCommerce',
+    price: '$2,000 – $5,000',
+    includes: ['Product, customer, and order migration', 'SEO redirect mapping', 'Theme rebuild on Shopify', 'Post-migration QA testing'],
+  },
+  {
+    name: 'From Wix / Squarespace',
+    price: '$1,500 – $4,000',
+    includes: ['Content and product migration', 'SEO redirect mapping', 'Theme build on Shopify', 'Post-migration QA testing'],
+  },
+  {
+    name: 'From BigCommerce / Magento',
+    price: '$3,000 – $8,000+',
+    includes: ['Complex data migration with custom mapping', 'Integration migration', 'Theme rebuild on Shopify', 'Extensive QA and testing'],
+  },
+];
+
+const migrates = [
+  { title: 'Products', description: 'All products, variants, images, descriptions, and inventory levels.' },
+  { title: 'Customers', description: 'Customer accounts, contact info, and order history.' },
+  { title: 'Orders', description: 'Historical order data so your records stay complete.' },
+  { title: 'SEO', description: '301 redirects from every old URL to the new Shopify URL. Your Google rankings are protected.' },
+  { title: 'Content', description: 'Blog posts, pages, and media files migrated to your new store.' },
+  { title: 'Integrations', description: 'We map your existing tools to Shopify equivalents and set up new integrations.' },
+];
+---
+
+<BaseLayout
+  title="Shopify Migration — WooCommerce, Wix, Squarespace & More | Lading & Launch"
+  description="Migrate your store to Shopify from WooCommerce, Wix, Squarespace, or BigCommerce. Zero data loss, SEO redirects, and a new theme. Starting at $1,500."
+  schema={schema}
+>
+  <!-- Hero -->
+  <Section background="primary">
+    <Breadcrumb items={[
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services/' },
+      { label: 'Migration' },
+    ]} />
+    <div class="animate-fade-in">
+      <h1 class="text-display text-white section__heading">Migrate to Shopify</h1>
+      <p class="text-body-lg text-neutral-300 max-w-2xl section__description">Moving platforms is stressful. We handle everything — products, customers, orders, SEO redirects, and a brand new Shopify store — so you don't lose a single sale.</p>
+    </div>
+  </Section>
+
+  <!-- Migration Pricing -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Migration Pricing</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {platforms.map((platform) => (
+        <Card>
+          <h3 class="text-h3 section__heading">{platform.name}</h3>
+          <p class="text-h2 text-accent section__heading">{platform.price}</p>
+          <ul class="text-body space-y-2">
+            {platform.includes.map((item) => (
+              <li>&#10003; {item}</li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Grid>
+    <p class="text-body-sm text-neutral-500 text-center mt-6">Pricing depends on the number of products, complexity of integrations, and customization needed. We'll scope your specific migration during the discovery call.</p>
+  </Section>
+
+  <!-- What We Migrate -->
+  <Section background="white">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Everything Moves With You</h2>
+    <Grid cols={3} class="animate-fade-in-stagger">
+      {migrates.map((item) => (
+        <div>
+          <h3 class="text-h3 section__heading">{item.title}</h3>
+          <p class="text-body text-neutral-600">{item.description}</p>
+        </div>
+      ))}
+    </Grid>
+  </Section>
+
+  <!-- FAQ -->
+  <Section background="cream">
+    <h2 class="text-h2 text-center section__heading animate-fade-in">Frequently Asked Questions</h2>
+    <div class="max-w-2xl mx-auto space-y-8 animate-fade-in">
+      {faqs.map((faq) => (
+        <div>
+          <h3 class="text-h3 section__heading">{faq.question}</h3>
+          <p class="text-body text-neutral-600">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <CTABanner
+    heading="Ready to Move to Shopify?"
+    description="Book a discovery call and we'll scope your migration — platform, timeline, and pricing."
+    buttonText="Book a Discovery Call"
+    buttonHref="/contact/"
+  />
+</BaseLayout>
