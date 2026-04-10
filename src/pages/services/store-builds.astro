@@ -155,7 +155,7 @@ const process = [
       {tiers.map((tier) => (
         <Card class:list={[tier.recommended && 'border-t-4 border-accent relative']}>
           {tier.recommended && (
-            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 inline-block mb-4">Recommended</span>
+            <span class="text-label bg-accent text-primary-dark rounded-full px-3 py-1 absolute -top-3 left-1/2 -translate-x-1/2">Recommended</span>
           )}
           <h3 class="text-h3 mb-3">{tier.name}</h3>
           <p class="text-h2 text-accent mb-4">{tier.price}</p>
