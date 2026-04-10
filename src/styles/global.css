@@ -454,8 +454,34 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary-light) 20%, transparent);
 }
 
+.form__select {
+  @apply w-full rounded-lg border border-neutral-300 px-4 py-3 text-base outline-none appearance-none bg-white bg-no-repeat transition-colors duration-200 ease-out cursor-pointer;
+  /* Chevron mirrors src/assets/icons/chevron-down.svg */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.form__select:focus {
+  @apply border-primary-light;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary-light) 20%, transparent);
+}
+
 .form__group {
   @apply mb-5;
+}
+
+/* ============================================================
+   CALENDLY
+   ============================================================ */
+
+.calendly-embed {
+  @apply rounded-xl overflow-hidden border border-neutral-200;
+}
+
+.calendly-embed iframe {
+  @apply w-full border-0;
+  min-height: 400px;
 }
 
 /* ============================================================
